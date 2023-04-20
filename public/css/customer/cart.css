@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 30px auto;
+    width: 80%;
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    color:rgb(247,147,30) ;
+}
+
+input[type="number"] {
+    width: 50px;
+}
+
+tfoot td {
+    padding: 10px;
+    text-align: right;
+}
+
+.remove-btn {
+    background-color: #ff0000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+img{
+    max-width: 100px;
+    max-height: 100px;
+}
+td button{
+    background-color: rgb(247,147,30);
+    border:none;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+}
+.value{
+    width: 30px;
+    background-color: white;
+}
+.operator{
+    width: 30px;
+    color: white;
+    background-color: black;
+}
+@media only screen and (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+    thead th {
+        font-size: 14px;
+        padding: 5px;
+    }
+    tbody td {
+        font-size: 14px;
+        padding: 5px;
+    }
+    .remove-btn {
+        font-size: 14px;
+        padding: 3px 5px;
+    }
+    img {
+        max-width: 80px;
+        max-height: 80px;
+    }
+    .value, .operator {
+        width: 20px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+}
+
+.login-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.login-img {
+    width: 65%;
+    height: 100%;
+}
+
+.login-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.login-details {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.login-logo {
+    width: 40%;
+    height: 30%;
+}
+
+.login-logo img {
+    width: 100%;
+    height: 100%;
+}
+.login-card h3{
+    color: rgb(121, 116, 116);
+}
+.login-card {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 80%;
+    height: 90%;
+}
+
+.login-form input {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.login-form input[type=submit] {
+    background-color: rgb(247,147,30);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.below-login-btn {
+    margin-top: 20px;
+    margin-left: 2px;
+}
+
+.below-login-btn a {
+    margin-left: 6px;
+}
+
+input[type=password]:focus,
+input[type=email]:focus {
+    outline: none;
+    border: 1px solid rgb(227, 150, 11);
+    box-shadow: 0 0 8px rgb(227, 150, 11);
+    transition: box-shadow 0.3s ease-in-out;
+    color: rgb(227, 150, 11);
+}
+
+input[type=email]:hover,
+input[type=password]:hover {
+    border: 1px solid rgb(227, 150, 11);
+    transition: all 0.3s ease-in-out;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(247,147,30);
+    box-shadow: 0 0 0.25em rgba(67, 71, 85, 0.27), 2px 0.25em 24px 0 rgba(90, 125, 188, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+@media only screen and (max-width: 600px) {
+    .login-page {
+        flex-direction: column;
+    }
+
+    .login-img {
+        width: 100%;
+        height: 30vh;
+    }
+
+    .login-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .login-details {
+        width: 100%;
+        height: 100vh;
+        border: none;
+    }
+
+    .login-logo {
+        width: 50%;
+        height: 30%;
+        margin: 10px auto;
+    }
+
+    .login-card {
+        width: 90%;
+        height: 70%;
+        margin: 10px auto;
+        /*border: 2px solid red;*/
+        /*border-radius: 20px;*/
+    }
+
+    .login-form {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    form {
+        width: 80%;
+        height: 90%;
+        margin: 10px auto;
+    }
+
+    .login-form input {
+        width: 100%;
+        height: 30%;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .login-form input[type=submit] {
+        background-color: rgb(255, 224, 146);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .below-login-btn {
+        margin-top: 20px;
+        margin-left: 2px;
+        font-size: 14px;
+    }
+
+    .below-login-btn a {
+        margin-left: 6px;
+    }
+
+    input[type=password]:focus,
+    input[type=email]:focus {
+        outline: none;
+        border: 1px solid rgb(227, 150, 11);
+        box-shadow: 0 0 8px rgb(227, 150, 11);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    input[type=email]:hover,
+    input[type=password]:hover {
+        border: 1px solid rgb(227, 150, 11);
+        transition: all 0.3s ease-in-out;
+    }
+
+    input[type=submit]:hover {
+        background-color: rgb(255, 224, 146);
+        box-shadow: 0 0 0.25em rgba(67, 71, 85, 0.27), 2px 0.25em 24px 0 rgba(90, 125, 188, 0.05);
+        transition: all 0.2s ease-in-out;
+    }
+}
+.login-details{
+    opacity: 0;
+    animation: fade-in 1s forwards;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
