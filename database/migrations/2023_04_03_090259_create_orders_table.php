@@ -21,6 +21,10 @@ return new class extends Migration
             $table->date('order_date');
             $table->date('delivery_date');
             $table->string('invoice_number');
+            $table->string('delivery_address');
+            $table->integer('quantity');
+            $table->string('payment_mode');
+            $table->string('payment_status');
             $table->timestamps();
         });
     }

@@ -1,0 +1,198 @@
+.product-details{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 28vh;
+    align-items: center;
+}
+.product-header{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+}
+.product-header h3{
+    margin-left: 60px;
+}
+.product-row{
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product-row a{
+    width: 18%;
+    height: 45%;
+    text-decoration: none;
+}
+.product-card{
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    border: 1px solid silver;
+}
+.product-card:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.product-image{
+    width: 100%;
+    height: 60%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid silver;
+}
+.product-image img{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.product-card-details{
+    width: 100%;
+    height: 25%;
+}
+.product-card-details h4{
+    width: 56%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+.product-desc{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+.product-rate{
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+.product-rating{
+    width: 22%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(217, 154, 84);
+    color: whitesmoke;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.product-cart-button{
+    width: 100%;
+    height: 55%;
+}
+.product-cart-button form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-cart-button form button{
+    width: 70%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background:  rgb(247,147,30);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.product-cart-button p{
+    margin-left: 8px;
+}
+.product-cart-button .wishlist-button{
+    width: 20%;
+    border-radius: 20px;
+    margin-left: 6px;
+    background: white;
+    color: red;
+    border: 1px solid red;
+}
+@media screen and (max-width: 600px) {
+    .product-details {
+        padding-top: 14vh;
+        height: auto;
+    }
+    .product-header h3 {
+        margin-left: 20px;
+    }
+    .product-row {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .product-row a {
+        width: 90%;
+        height: 50%;
+        margin-bottom: 20px;
+    }
+    .product-image {
+        height: 40%;
+    }
+    .product-card-details {
+        height: 20%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+    .product-card-details h4 {
+        width: 80%;
+        height: 30%;
+        margin-left: 20px;
+    }
+    .product-desc {
+        height: 30%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    .product-rate {
+        width: 70%;
+        height: 30%;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+    .product-rating {
+        width: 30%;
+        height: 50%;
+        margin-right: 20px;
+        border-radius: 6px;
+    }
+    .product-cart-button {
+        height: 20%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    .product-cart-button form {
+        height: 50%;
+        width: 100%;
+        margin-left: 20px;
+    }
+    .product-cart-button form button {
+        width: 80%;
+        height: 100%;
+        margin-top: 10px;
+    }
+    .product-cart-button p {
+        margin-left: 20px;
+    }
+    .product-cart-button .wishlist-button {
+        width: 30%;
+        height: 100%;
+        margin-left: 20px;
+    }
+}

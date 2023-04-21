@@ -1,0 +1,43 @@
+.customer-reviews {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.customer-reviews h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    color: rgb(247,147,30);
+}
+
+.review-card {
+    border: 1px solid rgb(247,147,30);;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.review-header h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(247,147,30);
+}
+
+.review-date {
+    font-size: 14px;
+    color: #666;
+}
+
+.review-body p {
+    font-size: 18px;
+    line-height: 1.5;
+}

@@ -1,0 +1,225 @@
+.cart-details{
+    width: 100%;
+    height: 100vh;
+    padding-top: 27vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-box{
+    width: 90%;
+    height: 90%;
+    display: flex;
+}
+.cart-img{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.cart-product-details{
+    width: 50%;
+    height: 100%;
+}
+.product-detail-header{
+    width: 100%;
+    height: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.product-detail-header h2{
+    font-weight: 500;
+}
+.product-rating-box{
+    width: 100%;
+    height: 6%;
+    display: flex;
+    align-items: center;
+}
+.rating-box{
+    width: 9%;
+    height: 80%;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rgb(247,147,30);
+}
+.product-details-box{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.product-details-box-01{
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.product-details-box-02{
+    width: 100%;
+    height: 15%;
+    display: flex;
+}
+.product-details-box-03{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product-details-box-04{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+}
+.product-cart-button{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+}
+.product-cart-button-01{
+    width: 50%;
+    height: 50%;
+    display: flex;
+}
+.product-cart-button-01 form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-cart-button-01 form button{
+    width: 65%;
+    height: 55%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background: rgb(247,147,30);
+    border-radius: 8px;
+    border: none;
+    color: white;
+}
+.product-cart-button-01 form button p{
+    margin-left: 6px;
+}
+.cart-button-01{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+.cart-button-02{
+    width: 100%;
+    height: 100%;
+}
+.cart-button-02 form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.cart-button-02 form .value,.operator{
+    width: 15%;
+    height: 45%;
+    margin-left: 4px;
+    border: 1px solid black;
+    font-size: 1.1rem;
+    border-radius: 4px;
+}
+.operator{
+    color: white;
+    background-color: black;
+}
+
+@media (max-width: 600px) {
+    .cart-details {
+        padding-top: 28vh;
+    }
+
+    .cart-box {
+        flex-direction: column;
+    }
+
+    .cart-img {
+        width: 100%;
+        height: 50%;
+    }
+
+    .cart-product-details {
+        width: 100%;
+        height: 50%;
+    }
+
+    .product-detail-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .product-rating-box {
+        height: 10%;
+    }
+
+    .rating-box {
+        width: 15%;
+        height: 80%;
+        font-size: 0.8rem;
+    }
+
+    .product-details-box-01 {
+        width: 90%;
+        height: 85%;
+    }
+
+    .product-details-box-02 {
+        height: 20%;
+    }
+
+    .product-details-box-03 {
+        width: 60%;
+        height: 100%;
+    }
+
+    .product-details-box-04 {
+        width: 40%;
+        height: 100%;
+        margin-left: 0;
+    }
+
+    .product-cart-button {
+        height: 30%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .product-cart-button-01 {
+        width: 100%;
+        height: 50%;
+    }
+
+    .product-cart-button-01 form button {
+        width: 80%;
+        height: 60%;
+    }
+
+    .cart-button-01 {
+        width: 100%;
+        height: 50%;
+    }
+
+    .cart-button-02 form .value,
+    .cart-button-02 form .operator {
+        width: 20%;
+        height: 60%;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,216 @@
+*{
+    margin: 0%;
+}
+.register-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+}
+.header-logo{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+}
+.register-form{
+    width: 50%;
+    height: 100%;
+    box-shadow: 0 0 0.25em rgba(67,71,85,0.27), 0.2px 0.2em 24px 0 rgba(1,29,77,0.15);
+}
+.register-page-logo{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+}
+.register-page-logo img{
+    width: 32%;
+    height: 100%;
+}
+.register-page-img{
+    position: relative;
+    width: 50%;
+    height: 100vh;
+}
+.customer-register-form{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.customer-register-form form{
+    width: 95%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.customer-register-form form input[type=submit]{
+    width: 25%;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: #f7931e;
+}
+.line{
+    display: flex;
+}
+.line p{
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    border-radius:10px;
+}
+.line hr{
+    width: 48%;
+}
+.external-login{
+    width: 100%;
+    height: 30%;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.external-login button{
+    width: 40%;
+    height: 35%;
+    display: flex;
+    padding-left: 45px;
+}
+.external-login button img{
+    width: 12%;
+    margin-top: 2px;
+}
+.external-login button a{
+    color: black;
+    padding-left: 6px;
+    text-decoration: none;
+}
+.external-login p a{
+    margin-left: 2px;
+}
+.external-login p{
+    margin-top: 8px;
+}
+.km{
+    position: absolute;
+}
+
+@media (max-width: 768px) {
+    .register-page {
+        flex-direction: column;
+    }
+
+    .header-logo, .register-page-logo, .register-page-img {
+        height: 15%;
+    }
+
+    .register-form, .register-page-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .register-page-logo img {
+        width: 20%;
+    }
+
+    .customer-register-form {
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .customer-register-form form {
+        height: auto;
+    }
+
+    .customer-register-form form input[type=submit] {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .line p {
+        font-size: 12px;
+        width: 30px;
+    }
+
+    .line hr {
+        width: 45%;
+    }
+
+    .external-login button {
+        width: 20%;
+    }
+}
+.register-form {
+    opacity: 0;
+    animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.customer-register-form form input[type=submit]:hover {
+    border: 1px solid #f7931e;
+    background-color: white;
+    color: #f7931e;
+    box-shadow: 0 0 0.25em rgba(67, 71, 85, 0.27), 2px 0.25em 24px 0 rgba(90, 125, 188, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.external-login button:hover {
+    background-color: #f7931e;
+    color: white;
+    box-shadow: 0 0 0.25em rgba(67, 71, 85, 0.27), 2px 0.25em 24px 0 rgba(90, 125, 188, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+.external-login button a:hover{
+    color: white;
+}
+.external-login button:hover img {
+    transform: rotate(360deg);
+    transition: all 0.5s ease-in-out;
+}
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+input[type=text]:focus, input[type=password]:focus ,input[type=number]:focus ,input[type=email]:focus ,input[type=date]:focus {
+    outline: none;
+    border: 1px solid rgb(227, 150, 11);
+    box-shadow: 0 0 8px rgb(227, 150, 11);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+
