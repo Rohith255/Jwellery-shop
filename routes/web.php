@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +36,6 @@ Route::get('add-product',function (){
     return view('admin.product.add-products');
 });
 Route::view('customer','admin.customer.customer-list');
-Route::view('admin','admin.admin-dashboard');
 Route::view('product','admin.product.display-products');
 Route::view('feedback','admin.customer.customer-feedback');
 Route::view('review','admin.product.product-review');
@@ -59,12 +58,19 @@ Route::view('category','customers.category_page')->name('customer.category');
 Route::view('home','customers.home')->name('customer.home');
 
 Route::view('review','customers.review_page');
-Route::view('admin-login','admin.admin-login');
 
 Route::view('cart-page','customers.cart_page')->name('customer.cart-page');
 Route::view('order-page','customers.order_page')->name('customer.order-page');
 
 Route::view('profile-page','customers.profile_page');
 Route::view('my-cart','customers.my-cart_page');
+
+Route::get('admin-login',[AdminAuthController::class,'login'])->name('admin.login');
+Route::post('admin-store',[AdminAuthController::class,'store'])->name('admin.store');
+Route::post('admin-logout',[AdminAuthController::class,'logout'])->name('admin.logout');
+Route::get('admin-dashboard',function (){
+    return view('admin.admin-dashboard');
+})->name('admin.dashboard')->middleware('auth:admin');
+
 
 require __DIR__.'/auth.php';

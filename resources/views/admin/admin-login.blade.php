@@ -34,18 +34,19 @@
                         </div>
                         <h4>Hello!</h4>
                         <h6 class="fw-light">Sign in to continue.</h6>
-                        <form class="pt-3">
+                        <form class="pt-3" method="post" action="{{route('admin.store')}}">
+                            @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                                <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
                             </div>
                             <div class="my-2 d-flex justify-content-end align-items-center">
                                 <a href="#" class="auth-link text-black">Forgot password?</a>
                             </div>
                             <div class="mt-3">
-                                <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                                <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="SIGN IN"></input>
                             </div>
                         </form>
                     </div>
