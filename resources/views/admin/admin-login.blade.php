@@ -38,9 +38,11 @@
                             @csrf
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="email">
+                                <p class="text-danger">@error('email'){{$message}}@enderror</p>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
+                                <p class="text-danger">@error('password'){{$message}}@enderror</p>
                             </div>
                             <div class="my-2 d-flex justify-content-end align-items-center">
                                 <a href="#" class="auth-link text-black">Forgot password?</a>

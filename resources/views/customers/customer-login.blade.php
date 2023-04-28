@@ -27,7 +27,9 @@
                     @csrf
                 <div class="row-3">
                     <input type="email" class="form-control" placeholder="Email" name="email" required>
+                    <p style="color: red">@error('email'){{$message}}@enderror</p>
                     <input type="password" class="form-control" placeholder="Password" name="password" required>
+                    <p style="color: red">@error('password'){{$message}}@enderror</p>
                     <input type="submit" value="login" class="form-control">
                 </div>
                     <div class="below-login-btn">

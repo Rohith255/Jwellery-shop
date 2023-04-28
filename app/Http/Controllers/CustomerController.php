@@ -17,11 +17,11 @@ class CustomerController extends Controller
 
         $request->validate([
             'name'=>'required',
-            'email'=>'required',
-            'dob'=>'required',
+            'email'=>'required|email',
+            'dob'=>'required|date',
             'address'=>'required',
-            'mobile'=>'required',
-            'password'=>'required'
+            'mobile'=>'required|min:10|max:10',
+            'password'=>'required|password'
         ]);
 
         $customer = new Customer;

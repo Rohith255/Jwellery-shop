@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,12 +56,14 @@ Route::post('admin-logout',[AdminAuthController::class,'logout'])->name('admin.l
 
 Route::prefix('admin')->middleware('auth:admin')->group(function (){
     Route::view('dashboard','admin.admin-dashboard')->name('admin.dashboard');
-    Route::view('add-product','admin.product.add-products')->name('admin.add-product');
-    Route::view('customer-list','admin.customer.customer-list')->name('admin.customer-list');
-    Route::view('product','admin.product.display-products')->name('admin.display-products');
-    Route::view('feedback','admin.customer.customer-feedback')->name('admin.feedback');
-    Route::view('review','admin.product.product-review')->name('admin.product-review');
-    Route::view('orders','admin.order-details.product-purchased')->name('admin.orders');
+    Route::get('customer/list',[AdminController::class,'customerList'])->name('admin.customer.list');
+    Route::delete('customer/delete/{id}',[AdminController::class,'delete'])->name('admin.customer.delete');
+    Route::get('add-product',[AdminController::class,'addProduct'])->name('admin.addProduct');
+    Route::post('store-product',[AdminController::class,'productStore'])->name('product.store');
+    Route::get('product-list',[AdminController::class,'productView'])->name('product.view');
+    Route::post('product/update/{id}',[AdminController::class,'productUpdatePage'])->name('product.update.page');
+    Route::put('product-update/{id}',[AdminController::class,'productUpdate'])->name('product.update');
+    Route::delete('product-delete/{id}',[AdminController::class,'productDelete'])->name('product.delete');
 });
 
 //
