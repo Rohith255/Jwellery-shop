@@ -17,29 +17,30 @@
             <img src="{{asset('images/new-logo.png')}}">
         </div>
         <div class="customer-register-form">
-            <form>
+            <form method="post" action="{{route('customer.store.user')}}">
+                @csrf
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" class="form-control" placeholder="Name" name="name" required>
                     </div>
                     <div class="col">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" name="email" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="date" class="form-control" aria-label="First name">
+                        <input type="date" class="form-control" name="dob" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Address" aria-label="Last name">
+                        <input type="text" class="form-control" placeholder="Address" name="address" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="number" class="form-control" placeholder="Mobile" aria-label="First name">
+                        <input type="number" class="form-control" placeholder="Mobile" name="mobile" required>
                     </div>
                     <div class="col">
-                        <input type="password" class="form-control" placeholder="Password" aria-label="Last name">
+                        <input type="password" class="form-control" placeholder="Password" name="password" required>
                     </div>
                 </div>
                 <div class="row">
@@ -47,6 +48,7 @@
                         <input type="submit" class="form-control" value="Sign up">
                     </div>
                 </div>
+            </form>
                 <div class="line">
                     <hr>
                     <p class="border border-gray-300">OR</p>
@@ -56,7 +58,7 @@
                     <button class="btn btn-white border-warning"><img src="https://pngimg.com/uploads/google/google_PNG19630.png" width="13%" height="22px"><a href="#">Sign in with google</a> </button>
                     <p>Already have an account  <a href="{{route('customer.login')}}"> Login</a> </p>
                 </div>
-            </form>
+
         </div>
     </div>
     <div class="register-page-img">

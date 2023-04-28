@@ -15,9 +15,9 @@
             </a>
             <div class="collapse" id="form-elements">
                 <ul class="nav flex-column">
-                    <li><a class="nav-link" href="#">Add product</a></li>
-                    <li><a class="nav-link" href="#">Product list</a></li>
-                    <li><a class="nav-link" href="#">Product review</a></li>
+                    <li><a class="nav-link" href="{{route('admin.add-product')}}">Add product</a></li>
+                    <li><a class="nav-link" href="{{route('admin.display-products')}}">Product list</a></li>
+                    <li><a class="nav-link" href="{{route('admin.product-review')}}">Product review</a></li>
                 </ul>
             </div>
         </li>
@@ -29,8 +29,8 @@
             </a>
             <div class="collapse" id="charts">
                 <ul class="nav flex-column">
-                    <li> <a class="nav-link" href="#">Customer list</a></li>
-                    <li> <a class="nav-link" href="#">Customer feedback</a></li>
+                    <li> <a class="nav-link" href="{{route('admin.customer-list')}}">Customer list</a></li>
+                    <li> <a class="nav-link" href="{{route('admin.feedback')}}">Customer feedback</a></li>
                 </ul>
             </div>
         </li>
@@ -42,7 +42,7 @@
             </a>
             <div class="collapse" id="student-detail">
                 <ul class="nav flex-column">
-                    <li><a class="nav-link" href="#">Purchased products</a></li>
+                    <li><a class="nav-link" href="{{route('admin.orders')}}">Purchased products</a></li>
                 </ul>
             </div>
         </li>

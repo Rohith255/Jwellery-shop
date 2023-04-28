@@ -31,9 +31,20 @@
                 </svg>
                 <a href="#">Cart</a>
             </button>
-            <button class="nav-login-button">
-                <a href="{{route('customer.login')}}">Login</a>
-            </button>
+
+                @if(\Illuminate\Support\Facades\Auth::guard('customer')->check())
+                <button class="nav-login-button">
+                    <a href="{{route('customer.profile')}}">Profile</a>
+                </button>
+                <button class="nav-login-button" style="margin-left: 4px">
+                    <a href="{{route('customer.logout')}}">Logout</a>
+                </button>
+                @else
+                <button class="nav-login-button">
+                    <a href="{{route('customer.login')}}">Login</a>
+                </button>
+                @endif
+
         </div>
     </div>
 </div>

@@ -23,10 +23,11 @@
         <div class="login-card">
             <h3 class="text-center">Login</h3>
             <div class="login-form">
-                <form method="post" action="#">
+                <form method="post" action="{{route('customer.store')}}">
+                    @csrf
                 <div class="row-3">
-                    <input type="email" class="form-control" placeholder="Email" aria-label="First name">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Last name">
+                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                    <input type="password" class="form-control" placeholder="Password" name="password" required>
                     <input type="submit" value="login" class="form-control">
                 </div>
                     <div class="below-login-btn">
