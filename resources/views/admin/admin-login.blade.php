@@ -6,20 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin2 </title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{asset('star/vendors/feather/feather.css')}}">
-    <link rel="stylesheet" href="{{asset('star/vendors/mdi/css/materialdesignicons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('star/vendors/ti-icons/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('star/vendors/typicons/typicons.css')}}">
-    <link rel="stylesheet" href="{{asset('star/vendors/simple-line-icons/css/simple-line-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('star/vendors/css/vendor.bundle.base.css')}}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('star/css/vertical-layout-light/style.css')}}">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
 
 <body>
@@ -29,26 +16,23 @@
             <div class="row w-100 mx-0">
                 <div class="col-lg-4 mx-auto">
                     <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                        <div class="brand-logo">
-                            <img src="../../images/logo.svg" alt="logo">
-                        </div>
                         <h4>Hello!</h4>
                         <h6 class="fw-light">Sign in to continue.</h6>
                         <form class="pt-3" method="post" action="{{route('admin.store')}}">
                             @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="email">
+                                <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="email" required>
                                 <p class="text-danger">@error('email'){{$message}}@enderror</p>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
+                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password" required>
                                 <p class="text-danger">@error('password'){{$message}}@enderror</p>
                             </div>
                             <div class="my-2 d-flex justify-content-end align-items-center">
                                 <a href="#" class="auth-link text-black">Forgot password?</a>
                             </div>
                             <div class="mt-3">
-                                <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="SIGN IN"></input>
+                                <input type="submit" class="btn btn-block btn-primary btn-lg text-white font-weight-medium auth-form-btn" value="SIGN IN">
                             </div>
                         </form>
                     </div>

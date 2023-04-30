@@ -24,13 +24,26 @@ class AdminController extends Controller
     }
     public function productStore(Request $request)
     {
+        $request->validate([
+            'product_name'=>'required',
+            'product_image'=>'required',
+            'category_id'=>'required',
+            'metal_type'=>'required',
+            'grams'=>'required'
+        ]);
+
+        $name = $request->file('product_image')->getClientOriginalName();
+
         Product::create([
             'product_name'=>$request->input('product_name'),
-            'product_img'=>$request->input('product_image'),
+            'product_img'=>$name,
             'category_id'=>$request->input('category_id'),
             'metal_type'=>$request->input('metal_type'),
             'grams'=>$request->input('grams')
         ]);
+
+        $image_name = $request->product_name.'.'.$request->product_image->extension();
+        $request->product_image->move('products', $image_name);
 
         return redirect()->route('admin.addProduct')->with('product-added','Product added successfully');
     }
@@ -49,6 +62,13 @@ class AdminController extends Controller
 
     public function productUpdate(Request $request,$id)
     {
+        $request->validate([
+            'product_name'=>'required',
+            'product_image'=>'required',
+            'category_id'=>'required',
+            'metal_type'=>'required',
+            'grams'=>'required'
+        ]);
         $product = Product::find($id);
         $product->update([
             'product_name'=>$request->input('product_name'),

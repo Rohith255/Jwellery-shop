@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,15 +16,6 @@ class CustomerController extends Controller
     }
     public function store(Request $request){
 
-
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required|email',
-            'dob'=>'required|date',
-            'address'=>'required',
-            'mobile'=>'required|min:10|max:10',
-            'password'=>'required|password'
-        ]);
 
         $customer = new Customer;
         $customer->name = $request->input('name');
@@ -62,5 +55,40 @@ class CustomerController extends Controller
         $customer = Customer::find(Auth::guard('customer')->id());
         $customer->delete();
         return redirect()->route('customer.register');
+    }
+
+    public function category()
+    {
+        return view('customers.category_page');
+    }
+
+    public function products($id)
+    {
+        $products = Product::where('category_id',$id)->get();
+
+        return view('customers.product_page',['products'=>$products]);
+    }
+
+    public function viewProduct($id)
+    {
+        $product = Product::find($id);
+
+        return view('customers.view_product_page',['product'=>$product]);
+    }
+
+    public function cart()
+    {
+        $carts = Cart::where('customer_id',Auth::guard('customer')->id())->get();
+        return view('customers.cart_page',['carts'=>$carts]);
+    }
+    public function addCart($id)
+    {
+        Cart::create([
+            'customer_id'=>Auth::guard('customer')->id(),
+            'product_id'=>$id,
+            'quantity'=>1
+        ]);
+
+        return redirect()->route('customer.cart');
     }
 }

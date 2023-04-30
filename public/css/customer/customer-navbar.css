@@ -78,16 +78,21 @@ body{
     display: flex;
     align-items: center;
 }
+.nav-btns-01 a{
+    height: 50%;
+    width: 20%;
+    text-decoration: none;
+}
 .nav-button{
     display: flex;
-    width: 20%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: white;
     border: none;
-    margin-left: 20px;
+    cursor: pointer;
 }
 .nav-button:hover, .nav-button a:hover{
     color: rgb(247,147,30);

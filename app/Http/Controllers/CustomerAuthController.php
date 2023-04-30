@@ -15,10 +15,6 @@ class CustomerAuthController extends Controller
 
     public function store(LoginRequest $request)
     {
-        $request->validate([
-            'email'=>'required| email',
-            'password'=>'required|password',
-        ]);
         if (Auth::guard('customer')->attempt($request->only(['email','password']))){
             return redirect()->route('customer.home');
         }

@@ -36,12 +36,10 @@ Route::view('product','customers.product_page')->name('customer.product-page');
 Route::view('view-product','customers.view_product_page')->name('customer.view_product');
 
 
-Route::view('category','customers.category_page')->name('customer.category');
 
 
 Route::view('review','customers.review_page');
 
-Route::view('cart-page','customers.cart_page')->name('customer.cart-page');
 Route::view('order-page','customers.order_page')->name('customer.order-page');
 
 
@@ -49,12 +47,12 @@ Route::view('my-cart','customers.my-cart_page');
 
 //Admin - routes
 
-Route::get('admin-login',[AdminAuthController::class,'login'])->name('admin.login');
-Route::post('admin-store',[AdminAuthController::class,'store'])->name('admin.store');
-Route::post('admin-logout',[AdminAuthController::class,'logout'])->name('admin.logout');
+Route::get('admin/login',[AdminAuthController::class,'login'])->name('admin.login');
+Route::post('admin/store',[AdminAuthController::class,'store'])->name('admin.store');
+Route::post('admin/logout',[AdminAuthController::class,'logout'])->name('admin.logout');
 
 
-Route::prefix('admin')->middleware('auth:admin')->group(function (){
+Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::view('dashboard','admin.admin-dashboard')->name('admin.dashboard');
     Route::get('customer/list',[AdminController::class,'customerList'])->name('admin.customer.list');
     Route::delete('customer/delete/{id}',[AdminController::class,'delete'])->name('admin.customer.delete');
@@ -77,12 +75,17 @@ Route::get('customer-logout',[CustomerAuthController::class,'logout'])->name('cu
 Route::get('customer-register',[CustomerController::class,'index'])->name('customer.register');
 Route::post('customer-store-user',[CustomerController::class,'store'])->name('customer.store.user');
 Route::get('home',[CustomerController::class,'home'])->name('customer.home');
+Route::get('category',[CustomerController::class,'category'])->name('customer.category');
+Route::get('products/{id}',[CustomerController::class,'products'])->name('customer.products');
+Route::get('view-product/{id}',[CustomerController::class,'viewProduct'])->name('customer.view.product');
 
-Route::prefix('customer')->group(function (){
+Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::get('profile',[CustomerController::class,'profile'])->name('customer.profile');
     Route::put('profile-update',[CustomerController::class,'update'])->name('customer.update');
     Route::delete('customer-delete',[CustomerController::class,'delete'])->name('customer.delete');
-})->middleware('auth:customer');
+    Route::get('cart',[CustomerController::class,'cart'])->name('customer.cart');
+    Route::post('add-cart/{id}',[CustomerController::class,'addCart'])->name('customer.add-cart');
+});
 
-//
+
 require __DIR__.'/auth.php';

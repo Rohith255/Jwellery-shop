@@ -1,12 +1,12 @@
 <div class="cart-details">
 <div class="cart-box">
 <div class="cart-img">
-<img src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8amV3ZWxyeXxlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60" width="90%" height="60%">
+<img src="{{asset('products/'.$product->product_name)}}.jpg" width="90%" height="60%" style="border: 1px solid goldenrod">
 </div>
     <div class="cart-product-details">
         <div class="product-detail-header">
             <h4>DCAPG12C4</h4>
-            <h2>14KT A Rose gold ring with white stone</h2>
+            <h2>{{$product->product_name}}</h2>
         </div>
         <div class="product-rating-box">
             <div class="rating-box">
@@ -24,7 +24,7 @@
                         <h3>:</h3>
                     </div>
                     <div class="product-details-box-04">
-                        <h3>Gold</h3>
+                        <h3>{{$product->metal_type}}</h3>
                     </div>
                 </div>
                 <div class="product-details-box-02">
@@ -44,7 +44,7 @@
                         <h3>:</h3>
                     </div>
                     <div class="product-details-box-04">
-                        <h3>2.500gm</h3>
+                        <h3>{{$product->grams}}gm</h3>
                     </div>
                 </div>
                 <div class="product-details-box-02">
@@ -82,7 +82,8 @@
         </div>
         <div class="product-cart-button">
             <div class="product-cart-button-01">
-                <form action="{{route('customer.cart-page')}}">
+                <form method="post" action="{{route('customer.add-cart',$product->id)}}">
+                    @csrf
                     <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
                         </svg> <p>Add to cart</p></button>
