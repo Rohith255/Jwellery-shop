@@ -27,7 +27,7 @@
             <td>{{$product->id}}</td>
             <td height="150px"><img src="{{asset('products/'.$product->product_name)}}.jpg" style="width: 90%;height: 100%;"></td>
             <td>{{$product->product_name}}</td>
-            <td>{{$product->category_id}}</td>
+            <td>{{$product->category->categories_name}}</td>
             <td>{{$product->metal_type}}</td>
             <td>{{$product->grams}}</td>
             <td class="d-flex justify-content-between">

@@ -13,7 +13,7 @@ class CategoryTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['ring','bangles','chain','earrings','coins'];
+        $categories = ['ring','bangles','chain','earrings','coins','necklace'];
         foreach ($categories as $category){
             Category::create([
                 'categories_name'=>$category

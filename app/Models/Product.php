@@ -9,18 +9,13 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = ['product_name','metal_type','product_img','grams','category_id'];
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function cart()
+    public function carts()
     {
-        return $this->belongsToMany(Cart::class);
-    }
-
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Cart::class, 'cart_products')->withPivot('quantity');
     }
 }

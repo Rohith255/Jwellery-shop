@@ -40,7 +40,6 @@ Route::view('view-product','customers.view_product_page')->name('customer.view_p
 
 Route::view('review','customers.review_page');
 
-Route::view('order-page','customers.order_page')->name('customer.order-page');
 
 
 Route::view('my-cart','customers.my-cart_page');
@@ -78,6 +77,8 @@ Route::get('home',[CustomerController::class,'home'])->name('customer.home');
 Route::get('category',[CustomerController::class,'category'])->name('customer.category');
 Route::get('products/{id}',[CustomerController::class,'products'])->name('customer.products');
 Route::get('view-product/{id}',[CustomerController::class,'viewProduct'])->name('customer.view.product');
+Route::get('all',[CustomerController::class,'allProduct'])->name('customer.all-product');
+
 
 Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::get('profile',[CustomerController::class,'profile'])->name('customer.profile');
@@ -85,7 +86,10 @@ Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::delete('customer-delete',[CustomerController::class,'delete'])->name('customer.delete');
     Route::get('cart',[CustomerController::class,'cart'])->name('customer.cart');
     Route::post('add-cart/{id}',[CustomerController::class,'addCart'])->name('customer.add-cart');
+    Route::delete('cart/delete/{id}',[CustomerController::class,'deleteCart'])->name('customer.delete-cart');
+    Route::post('quantityAdd/{id}',[CustomerController::class,'quantityAdd'])->name('customer.quantityAdd');
+    Route::post('quantitySub/{id}',[CustomerController::class,'quantitySub'])->name('customer.quantitySub');
+    Route::post('order/add',[CustomerController::class,'orderAdd'])->name('customer.order.add');
 });
-
 
 require __DIR__.'/auth.php';

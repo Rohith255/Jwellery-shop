@@ -63,6 +63,21 @@ td button{
     color: white;
     background-color: black;
 }
+.cart-button-02{
+    display: flex;
+}
+.cart-button-02 button{
+    cursor: pointer;
+}
+.quantity-vslue{
+    width: 12%;
+    /*border-radius: 4px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: whitesmoke;*/
+    /*border: 1px solid silver;*/
+}
 @media only screen and (max-width: 600px) {
     table {
         width: 100%;

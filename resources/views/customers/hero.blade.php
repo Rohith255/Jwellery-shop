@@ -45,13 +45,13 @@
                 <p>Ring</p>
             </div>
         </a>
-        <a href="{{route('customer.products',6)}}" style="text-decoration: none">
+        <a href="{{route('customer.products',3)}}" style="text-decoration: none">
             <div class="category-card">
                 <img src="https://images.unsplash.com/photo-1601121141461-920cb1993441?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fG5lY2tsYWNlfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60" width="100%" height="82%">
                 <p>Necklace</p>
             </div>
         </a>
-        <a href="{{route('customer.products',4)}}" style="text-decoration: none">
+        <a href="{{route('customer.products',5)}}" style="text-decoration: none">
             <div class="category-card">
                 <img src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGVhcnJpbmdzfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60" width="100%" height="82%">
                 <p>Earrings</p>
@@ -59,13 +59,13 @@
         </a>
     </div>
     <div class="category-card-01">
-        <a href="{{route('customer.products',3)}}" style="text-decoration: none">
+        <a href="{{route('customer.products',6)}}" style="text-decoration: none">
             <div class="category-card">
                 <img src="https://images.unsplash.com/photo-1626947276496-e102cb9e5cb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z29sZCUyMGNoYWlufGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60" width="100%" height="82%">
                 <p>Chain</p>
             </div>
         </a>
-        <a href="{{route('customer.products',5)}}" style="text-decoration: none">
+        <a href="{{route('customer.products',4)}}" style="text-decoration: none">
             <div class="category-card">
                 <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sZCUyMGJyYWNlbGV0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60" width="100%" height="82%">
                 <p>Bracelet</p>

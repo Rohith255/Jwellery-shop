@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('metal_type');
             $table->string('product_img');
             $table->integer('grams');
-            $table->string('gender');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
