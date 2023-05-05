@@ -1,7 +1,6 @@
 <div class="profile-section">
     <div class="profile-section-01">
         <a href="#"><button>My profile</button></a>
-        <a href="{{route('customer.my-order')}}"><button style="background-color: white;color: black">My cart</button></a>
     </div>
     <div class="profile-details">
         <form method="post" action="{{route('customer.update')}}">

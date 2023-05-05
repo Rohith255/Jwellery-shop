@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade as PDF;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -87,4 +90,30 @@ class AdminController extends Controller
 
         return redirect()->route('product.view')->with('product-deleted','Product deleted successfully');
     }
+
+    public function orders()
+    {
+        $orders = Order::with(['customer','products'])->paginate(6);
+//        return $orders;
+        return view('admin.order-details.product-purchased',['orders'=>$orders]);
+    }
+
+    public function orderDownload()
+    {
+        $orders = Order::with(['customer','products'])->get();
+
+        $html = view('admin.order-details.orderPdf',compact('orders'));
+        $dompdf = new Dompdf;
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4','portrait');
+
+        $dompdf->render();
+
+        $file_name = 'order-'.date('YmdHis').'.pdf';
+
+        return $dompdf->stream($file_name);
+    }
+
 }

@@ -5,6 +5,7 @@
             <p>{{session('deleted')}}</p>
         </div>
     @endif
+    <div class="container">
     <h3 class="text-center mt-3 container text-primary">Customer List</h3>
     <table class="table table-striped table-bordered container">
         <tr>
@@ -34,4 +35,5 @@
         </tr>
         @endforeach
     </table>
+    </div>
 @endsection

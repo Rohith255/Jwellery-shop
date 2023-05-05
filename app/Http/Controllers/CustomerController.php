@@ -217,7 +217,7 @@ class CustomerController extends Controller
 
         DB::table('cart_product')->where('cart_id',$cart->id)->delete();
 
-        return 'ordered';
+        return redirect()->route('customer.my-order');
     }
 
     public function myOrder()
@@ -225,8 +225,16 @@ class CustomerController extends Controller
 
         $orders = Order::where('customer_id',Auth::guard('customer')->id())->with('products')->get();
 
-//        return $orders;
 
         return view('customers.my-cart_page',['orders'=>$orders]);
+    }
+
+    public function orderCancel($orderId,$productId)
+    {
+        $order = Order::find($orderId);
+
+        $product_order = $order->products->where('id', $productId)->first()->pivot;
+        $product_order->delete();
+        return redirect()->route('customer.my-order');
     }
 }

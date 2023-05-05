@@ -62,6 +62,7 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::put('product-update/{id}',[AdminController::class,'productUpdate'])->name('product.update');
     Route::delete('product-delete/{id}',[AdminController::class,'productDelete'])->name('product.delete');
     Route::get('order-details',[AdminController::class,'orders'])->name('admin.orders');
+    Route::get('order-details/download',[AdminController::class,'orderDownload'])->name('admin.download-order');
 });
 
 //
@@ -94,6 +95,8 @@ Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::post('checkout-page/{id}',[CustomerController::class,'checkoutPage'])->name('customer.checkout-page');
     Route::post('place-order',[CustomerController::class,'placeOrder'])->name('customer.order-place');
     Route::get('my-order',[CustomerController::class,'myOrder'])->name('customer.my-order');
+    Route::delete('order/{orderId}/cancel/{productId}',[CustomerController::class,'orderCancel'])->name('customer.order-cancel');
+//    Route::get('/orders/{orderId}/cancel-product/{productId}',[CustomerController::class,'orderCancel'])->name('customer.order-cancel');
 });
 
 require __DIR__.'/auth.php';
