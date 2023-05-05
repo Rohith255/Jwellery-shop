@@ -24,10 +24,10 @@
                 <select class="form-select h-50" name="category_id">
                     <option value="1">Ring</option>
                     <option value="2">Bangles</option>
-                    <option value="3">Necklace</option>
-                    <option value="4">Chain</option>
-                    <option value="5">Earrings</option>
-                    <option value="6">Coins</option>
+                    <option value="6">Necklace</option>
+                    <option value="3">Chain</option>
+                    <option value="4">Earrings</option>
+                    <option value="5">Coins</option>
                 </select>
                 <p style="color: red">@error('category_id'){{$message}}@enderror</p>
             </div>

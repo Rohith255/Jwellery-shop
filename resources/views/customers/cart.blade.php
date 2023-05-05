@@ -56,10 +56,10 @@
     <tr>
         <td colspan="4"></td>
         <td>
-            <form action="{{route('customer.order.add')}}" method="post">
-                @csrf
-                <button type="submit">Proceed to checkout</button>
-            </form>
+                <form action="{{route('customer.checkout-page',$cart->id)}}" method="post">
+                    @csrf
+                    <button type="submit" style="cursor: pointer">Proceed to checkout</button>
+                </form>
         </td>
     </tr>
     </tfoot>

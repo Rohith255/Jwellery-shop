@@ -61,6 +61,7 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::post('product/update/{id}',[AdminController::class,'productUpdatePage'])->name('product.update.page');
     Route::put('product-update/{id}',[AdminController::class,'productUpdate'])->name('product.update');
     Route::delete('product-delete/{id}',[AdminController::class,'productDelete'])->name('product.delete');
+    Route::get('order-details',[AdminController::class,'orders'])->name('admin.orders');
 });
 
 //
@@ -90,6 +91,9 @@ Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::post('quantityAdd/{id}',[CustomerController::class,'quantityAdd'])->name('customer.quantityAdd');
     Route::post('quantitySub/{id}',[CustomerController::class,'quantitySub'])->name('customer.quantitySub');
     Route::post('order/add',[CustomerController::class,'orderAdd'])->name('customer.order.add');
+    Route::post('checkout-page/{id}',[CustomerController::class,'checkoutPage'])->name('customer.checkout-page');
+    Route::post('place-order',[CustomerController::class,'placeOrder'])->name('customer.order-place');
+    Route::get('my-order',[CustomerController::class,'myOrder'])->name('customer.my-order');
 });
 
 require __DIR__.'/auth.php';

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/customer/customer-navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/customer/order.css')}}">
-    <title>Document</title>
+    <title>Place Order</title>
 </head>
 <body>
 @include('customers.navbar')

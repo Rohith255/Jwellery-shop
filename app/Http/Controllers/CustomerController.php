@@ -6,8 +6,11 @@ use App\Models\Cart;
 use App\Models\CartProduct;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +32,11 @@ class CustomerController extends Controller
         $customer->password = Hash::make($request->input('password'));
         $customer->save();
 
-        return view('customers.home');
+        Cart::create([
+            'customer_id' => $customer->id,
+        ]);
+
+        return redirect()->route('customer.login');
     }
     public function home()
     {
@@ -99,20 +106,20 @@ class CustomerController extends Controller
                 'product_id'=>$id
             ]);
 
-            return 'cart created and product added';
+            return redirect()->route('customer.cart');
         }
         else{
-            $product = DB::table('cart_product')->where('cart_id',$cart_user->id and 'product_id',$id)->get();
+            $product = DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->get();
 
             if ($product->count()==0){
                 DB::table('cart_product')->insert([
                     'cart_id'=>$cart_user->id,
                     'product_id'=>$id
                 ]);
-                return 'product added';
+                return redirect()->route('customer.cart');
             }
             else {
-                return 'product already added';
+                return redirect()->route('customer.cart');
             }
         }
 
@@ -128,39 +135,98 @@ class CustomerController extends Controller
     }
     public function quantityAdd($id)
     {
+        $cart_user = Cart::where('customer_id',Auth::guard('customer')->id())->first();
 
-        $cart = Cart::where('customer_id',Auth::guard('customer')->id())->where('product_id',$id)->get();
+        $cart_product = DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->first();
 
-        foreach ($cart as $cart){
-            $new_quantity = $cart->quantity;
-        }
-        $cart->update([
-            'quantity'=>$new_quantity+1,
+        DB::table('cart_product')->where('product_id',$id)->update([
+            'quantity'=>$cart_product->quantity+1,
         ]);
+
         return redirect()->back();
     }
 
     public function quantitySub($id)
     {
-        $cart = Cart::where('customer_id',Auth::guard('customer')->id())->where('product_id',$id)->get();
+        $cart_user = Cart::where('customer_id',Auth::guard('customer')->id())->first();
 
-        foreach ($cart as $cart){
-            $new_quantity = $cart->quantity;
-        }
-        if ($new_quantity>1) {
-            $cart->update([
-                'quantity'=>$new_quantity-1,
+        $cart_product = DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->first();
+
+        if ($cart_product->quantity>1){
+            DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->update([
+                'quantity'=>$cart_product->quantity-1,
             ]);
             return redirect()->back();
         }
         else{
-            $cart = Cart::where('customer_id',Auth::guard('customer')->id())->where('product_id',$id)->delete();
-            return redirect()->route('customer.cart');
+            DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->delete();
+            return redirect()->back();
         }
     }
     public function allProduct()
     {
         $products = Product::all();
         return view('customers.all_product_page',['products'=>$products]);
+    }
+
+    public function checkoutPage($id)
+    {
+        $cart_user = Cart::where('customer_id',Auth::guard('customer')->id())->with('products')->get();
+        $quantity = 0;
+        $grams = 0;
+        foreach ($cart_user as $cart){
+            foreach ($cart->products as $product){
+                if ($product->pivot->quantity>1){
+                 $grams+=$product->grams*2;
+                }
+                else{
+                    $grams+=$product->grams;
+                }
+            }
+        }
+
+        return view('customers.order_page',['cart_user'=>$cart_user,'quantity'=>$quantity,'grams'=>$grams]);
+    }
+
+    public function placeOrder(Request $request)
+    {
+        $cart = Cart::where('customer_id',Auth::guard('customer')->id())->first();
+
+        $order = new Order;
+        $order->customer_id =Auth::guard('customer')->id();
+        $order->save();
+
+        $products = $cart->products;
+
+        foreach ($products as $product){
+            $orderProduct = new OrderProduct;
+            $orderProduct->order_id = $order->id;
+            $orderProduct->product_id = $product->id;
+            $one_gram = 6038;
+            $amount = $one_gram*$product->grams*$product->pivot->quantity;
+            $orderProduct->amount = $amount;
+            $orderProduct->order_date = Carbon::today()->toDateString();
+            $orderProduct->delivery_date = Carbon::today()->addWeek()->toDateString();
+            $orderProduct->invoice_number = 'SJS-' .mt_rand(100000,999999);
+            $orderProduct->delivery_address = $request->input('address');
+            $orderProduct->quantity = $product->pivot->quantity;
+            $orderProduct->payment_mode = 'COD';
+            $orderProduct->payment_status = 'PENDING';
+            $orderProduct->save();
+        }
+
+        DB::table('cart_product')->where('cart_id',$cart->id)->delete();
+
+        return 'ordered';
+    }
+
+    public function myOrder()
+    {
+
+        $orders = Order::where('customer_id',Auth::guard('customer')->id())->with('products')->get();
+
+//        return $orders;
+
+        return view('customers.my-cart_page',['orders'=>$orders]);
     }
 }

@@ -1,22 +1,23 @@
 <div class="profile-section">
     <div class="profile-section-01">
-        <a href="#"><button style="background-color: white;color: black">My profile</button></a>
+        <a href="{{route('customer.profile')}}"><button style="background-color: white;color: black">My profile</button></a>
         <a href="#"><button>My cart</button></a>
     </div>
-    <form>
-    <div class="order-details-box">
+    @foreach($orders as $order)
+        @foreach($order->products as $product)
+            <div class="order-details-box">
         <div class="order-details-box-01">
-            <img src="https://www.kalyanjewellers.net/images/Jewellery/Gold/images/kajjara-nimah-gold-jhumka.jpg" width="100%" height="100%">
+            <img src="{{asset('products/'.$product->product_name)}}.jpg" width="90%" height="100%">
         </div>
         <div class="order-details-box-02">
-            <h2>Green stone earring</h2>
+            <h3>{{$product->product_name}}</h3>
             <div class="order-details-box-03">
                 <div class="order-invoice-01">
                     <h5>INVOICE</h5>
                     <h5>:</h5>
                 </div>
                 <div class="order-invoice-02">
-                    21MNAZ2
+                    {{$product->pivot->invoice_number}}
                 </div>
             </div>
             <div class="order-details-box-03">
@@ -25,7 +26,7 @@
                     <h5>:</h5>
                 </div>
                 <div class="order-invoice-02">
-                    21/mar/2023
+                    {{$product->pivot->order_date}}
                 </div>
             </div>
             <div class="order-details-box-03">
@@ -34,7 +35,7 @@
                     <h5>:</h5>
                 </div>
                 <div class="order-invoice-02">
-                    22/mar/2023
+                    {{$product->pivot->delivery_date}}
                 </div>
             </div>
             <div class="order-cancel">
@@ -42,5 +43,6 @@
             </div>
         </div>
     </div>
-    </form>
+        @endforeach
+    @endforeach
 </div>

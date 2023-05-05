@@ -1,18 +1,30 @@
+@php
+    $total_grams = $grams;
+    $one_gram = 6038;
+    $tax = 350;
+
+    $total_price = $one_gram*$total_grams;
+@endphp
 <div class="order-box">
     <div class="order-box-01">
         <h2 style="color:rgb(247,147,30)">Billing address</h2>
-        <form>
+        <form method="post" action="{{route('customer.order-place')}}">
+            @csrf
             <div class="form-row">
-                <input type="text" placeholder="Address" class="form-control">
-                <select>
-                    <option>Chennai</option>
+                <input type="text" placeholder="Address" class="form-control" name="address" required>
+                <select name="place">
+                    <option>Dharmapuri</option>
+                    <option>Pidamaneri</option>
+                    <option>Oddapatti</option>
+                    <option>Palacode</option>
+                    <option>Hogenakkal</option>
                 </select>
             </div>
             <div class="form-row-01">
-            <input type="text" placeholder="pincode">
-            <input type="number" placeholder="Mobile">
+            <input type="number" placeholder="pincode" name="pincode">
+            <input type="number" placeholder="mobile" name="mobile">
             </div>
-            <button type="submit">Confirm to place order</button>
+            <button type="submit" style="cursor: pointer">Confirm to place order</button>
         </form>
     </div>
     <div class="order-box-02">
@@ -22,11 +34,11 @@
             </div>
             <div class="order-box-details-01">
                 <p>Price</p>
-                <h4>₨.24,500</h4>
+                <h3>₹ {{number_format($total_price,2)}}</h3>
             </div>
             <div class="order-box-details-01">
                 <p>Taxes</p>
-                <h4>₨.500</h4>
+                <h4>{{$tax}}</h4>
             </div>
             <div class="order-box-details-02">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -37,7 +49,7 @@
             </div>
             <div class="order-box-details-03">
                 <p>Total price</p>
-                <h4>₨.29,500</h4>
+                <h4>{{number_format($total_price+$tax,2)}}</h4>
             </div>
         </div>
     </div>

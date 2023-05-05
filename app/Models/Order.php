@@ -18,8 +18,8 @@ class Order extends Model
     {
         return $this->belongsTo(Cart::class);
     }
-    public function order_products()
+    public function products()
     {
-        return $this->hasMany(OrderProduct::class);
+        return $this->belongsToMany(Product::class, 'order_products')->withPivot(['quantity','amount','invoice_number','order_date','delivery_date','payment_mode','payment_status','delivery_address']);
     }
 }
