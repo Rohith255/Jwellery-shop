@@ -208,3 +208,31 @@ input[type=submit]:hover {
         transform: translateY(0);
     }
 }
+
+.alt {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 0;
+    left: 8px;
+    animation-duration: 0.5s;
+    animation-name: slidein;
+}
+
+.alt-success {
+    color: #155724;
+    background-color: red;
+    border-color: red;
+    color: whitesmoke;
+}
+
+@keyframes slidein {
+    from {
+        bottom: -50px;
+    }
+    to {
+        bottom: 0;
+    }
+}

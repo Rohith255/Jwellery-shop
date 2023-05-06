@@ -29,3 +29,24 @@
 @endforeach
 </div>
 
+@if (session('placed'))
+    <div class="alert alert-success" style="background-color:  #c3e6cb;  border-color: #c3e6cb;color: black;">
+        {{ session('placed') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('.alert').fadeOut('fast');
+        }, 4000);
+    </script>
+@endif
+
+@if (session('deleted'))
+    <div class="alert alert-success">
+        {{ session('deleted') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('.alert').fadeOut('fast');
+        }, 4000);
+    </script>
+@endif

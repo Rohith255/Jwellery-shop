@@ -31,19 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::view('navbar','customers.navbar');
-Route::view('product','customers.product_page')->name('customer.product-page');
-Route::view('view-product','customers.view_product_page')->name('customer.view_product');
-
-
-
-
-Route::view('review','customers.review_page');
-
-
-
-Route::view('my-cart','customers.my-cart_page');
-
 //Admin - routes
 
 Route::get('admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -96,7 +83,6 @@ Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::post('place-order',[CustomerController::class,'placeOrder'])->name('customer.order-place');
     Route::get('my-order',[CustomerController::class,'myOrder'])->name('customer.my-order');
     Route::delete('order/{orderId}/cancel/{productId}',[CustomerController::class,'orderCancel'])->name('customer.order-cancel');
-//    Route::get('/orders/{orderId}/cancel-product/{productId}',[CustomerController::class,'orderCancel'])->name('customer.order-cancel');
 });
 
 require __DIR__.'/auth.php';

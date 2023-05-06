@@ -64,3 +64,38 @@
     </tr>
     </tfoot>
 </table>
+
+
+@if (session('added'))
+    <div class="alert alert-success">
+        {{ session('added') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('.alert').fadeOut('fast');
+        }, 4000);
+    </script>
+@endif
+
+
+@if (session('already-added'))
+    <div class="alert alert-danger">
+        {{ session('already-added') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('.alert').fadeOut('fast');
+        }, 4000);
+    </script>
+@endif
+
+@if (session('cart-deleted'))
+    <div class="alert alert-danger">
+        {{ session('cart-deleted') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('.alert').fadeOut('fast');
+        }, 4000);
+    </script>
+@endif

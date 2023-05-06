@@ -53,7 +53,7 @@ class AdminController extends Controller
 
     public function productView()
     {
-        $products = Product::with('category')->paginate(4);
+        $products = Product::with('category')->paginate(8);
         return view('admin.product.display-products',['products'=>$products]);
     }
 

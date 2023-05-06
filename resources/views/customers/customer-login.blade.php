@@ -39,6 +39,16 @@
                 </form>
             </div>
         </div>
+        @if (session('error'))
+            <div class="alt alt-success">
+                {{ session('error') }}
+            </div>
+            <script>
+                setTimeout(function() {
+                    $('.alert').fadeOut('fast');
+                }, 4000);
+            </script>
+        @endif
     </div>
 </div>
 </body>

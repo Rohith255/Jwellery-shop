@@ -9,26 +9,32 @@
             <div class="profile-details-01">
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{$customer->name}}" required>
+                <p style="color: red">@error('name'){{$message}}@enderror</p>
             </div>
             <div class="profile-details-01">
                 <label for="email">Email</label>
                 <input type="email" name="email" value="{{$customer->email}}" required>
+                <p style="color: red">@error('email'){{$message}}@enderror</p>
             </div>
             <div class="profile-details-01">
                 <label for="address">Address</label>
                 <input type="text" name="address" value="{{$customer->address}}" required>
+                <p style="color: red">@error('address'){{$message}}@enderror</p>
             </div>
             <div class="profile-details-01">
                 <label for="mobile">Mobile</label>
                 <input type="number" name="mobile" value="{{$customer->mobile}}" required>
+                <p style="color: red">@error('mobile'){{$message}}@enderror</p>
             </div>
             <div class="profile-details-01">
                 <label for="dob">Dob</label>
-                <input type="date" name="dob" value="{{$customer->dob}}">
+                <input type="date" name="dob" value="{{$customer->dob}}" required>
+                <p style="color: red">@error('dob'){{$message}}@enderror</p>
             </div>
             <div class="profile-details-01">
                 <label for="password">Password</label>
-                <input type="password" name="password" value="" required>
+                <input type="password" name="password" required>
+                <p style="color: red">@error('password'){{$message}}@enderror</p>
             </div>
             <div class="profile-details-button">
                 <button type="submit">Update</button>

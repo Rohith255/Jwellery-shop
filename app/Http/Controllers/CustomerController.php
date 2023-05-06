@@ -49,7 +49,17 @@ class CustomerController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'mobile'=>'required',
+            'address'=>'required',
+            'dob'=>'required',
+            'password'=>'required',
+        ]);
+
         $customer = Customer::find(Auth::guard('customer')->id());
+
         $mobile = $request->input('mobile');
         $customer->update([
             'name'=>$request->input('name'),
@@ -106,7 +116,7 @@ class CustomerController extends Controller
                 'product_id'=>$id
             ]);
 
-            return redirect()->route('customer.cart');
+            return redirect()->route('customer.cart')->with('added','Added to the Cart!');
         }
         else{
             $product = DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->get();
@@ -116,10 +126,10 @@ class CustomerController extends Controller
                     'cart_id'=>$cart_user->id,
                     'product_id'=>$id
                 ]);
-                return redirect()->route('customer.cart');
+                return redirect()->route('customer.cart')->with('added','Added to the Cart!');
             }
             else {
-                return redirect()->route('customer.cart');
+                return redirect()->route('customer.cart')->with('already-added','Product already in Cart!');
             }
         }
 
@@ -131,7 +141,7 @@ class CustomerController extends Controller
 
         DB::table('cart_product')->where('cart_id',$cart_user->id)->where('product_id',$id)->delete();
 
-        return redirect()->route('customer.cart');
+        return redirect()->route('customer.cart')->with('cart-deleted','Product deleted from Cart!');
     }
     public function quantityAdd($id)
     {
@@ -217,7 +227,7 @@ class CustomerController extends Controller
 
         DB::table('cart_product')->where('cart_id',$cart->id)->delete();
 
-        return redirect()->route('customer.my-order');
+        return redirect()->route('customer.my-order')->with('placed','Order Placed Successfully!');
     }
 
     public function myOrder()
@@ -235,6 +245,6 @@ class CustomerController extends Controller
 
         $product_order = $order->products->where('id', $productId)->first()->pivot;
         $product_order->delete();
-        return redirect()->route('customer.my-order');
+        return redirect()->route('customer.my-order')->with('deleted','Product cancelled successfully');;
     }
 }
