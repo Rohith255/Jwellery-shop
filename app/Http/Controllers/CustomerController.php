@@ -22,6 +22,14 @@ class CustomerController extends Controller
     }
     public function store(Request $request){
 
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'mobile'=>'required|digits:10',
+            'dob'=>'required|date',
+            'address'=>'required',
+            'password'=>'required|min:8'
+        ]);
 
         $customer = new Customer;
         $customer->name = $request->input('name');

@@ -50,6 +50,8 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::delete('product-delete/{id}',[AdminController::class,'productDelete'])->name('product.delete');
     Route::get('order-details',[AdminController::class,'orders'])->name('admin.orders');
     Route::get('order-details/download',[AdminController::class,'orderDownload'])->name('admin.download-order');
+    Route::get('order-status',[AdminController::class,'orderStatus'])->name('admin.order-status');
+    Route::post('status/{orderId}/change/{productId}',[AdminController::class,'statusChange'])->name('admin.status-change');
 });
 
 //

@@ -21,31 +21,31 @@
                 @csrf
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Name" name="name">
+                        <input type="text" class="form-control" placeholder="Name" name="name" required>
                         <p style="color: red">@error('name'){{$message}}@enderror</p>
                     </div>
                     <div class="col">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="email" class="form-control" placeholder="Email" name="email" required>
                         <p style="color: red">@error('email'){{$message}}@enderror</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="date" class="form-control" name="dob" >
+                        <input type="date" class="form-control" name="dob" required >
                         <p style="color: red">@error('dob'){{$message}}@enderror</p>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Address" name="address" >
+                        <input type="text" class="form-control" placeholder="Address" name="address" required>
                         <p style="color: red">@error('address'){{$message}}@enderror</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="number" class="form-control" placeholder="Mobile" name="mobile" >
+                        <input type="number" class="form-control" placeholder="Mobile" name="mobile" required>
                         <p style="color: red">@error('mobile'){{$message}}@enderror</p>
                     </div>
                     <div class="col">
-                        <input type="password" class="form-control" placeholder="Password" name="password" >
+                        <input type="password" class="form-control" placeholder="Password" name="password" required>
                         <p style="color: red">@error('password'){{$message}}@enderror</p>
                     </div>
                 </div>
@@ -61,7 +61,6 @@
                     <hr>
                 </div>
                 <div class="external-login">
-                    <button class="btn btn-white border-warning"><img src="https://pngimg.com/uploads/google/google_PNG19630.png" width="13%" height="22px"><a href="#">Sign in with google</a> </button>
                     <p>Already have an account  <a href="{{route('customer.login')}}"> Login</a> </p>
                 </div>
         </div>

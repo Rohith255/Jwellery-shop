@@ -9,9 +9,9 @@
                 <th>Metal type</th>
                 <th>Weight</th>
                 <th>Amount</th>
-                <th>Quantity</th>
                 <th>Order date</th>
                 <th>Delivery date</th>
+                <th>Status</th>
                 <th>Invoice number</th>
             </tr>
             @foreach($orders as $order)
@@ -22,9 +22,9 @@
                 <td>{{$products->metal_type}}</td>
                 <td>{{$products->grams}}.gm</td>
                 <td>{{$products->pivot->amount}}</td>
-                <td>{{$products->pivot->quantity}}</td>
                 <td>{{$products->pivot->order_date}}</td>
                 <td>{{$products->pivot->delivery_date}}</td>
+                <td>{{$products->pivot->payment_status}}</td>
                 <td>{{$products->pivot->invoice_number}}</td>
             </tr>
                     @endforeach

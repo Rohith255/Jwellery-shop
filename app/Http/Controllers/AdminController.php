@@ -94,7 +94,7 @@ class AdminController extends Controller
     public function orders()
     {
         $orders = Order::with(['customer','products'])->paginate(6);
-//        return $orders;
+
         return view('admin.order-details.product-purchased',['orders'=>$orders]);
     }
 
@@ -116,4 +116,18 @@ class AdminController extends Controller
         return $dompdf->stream($file_name);
     }
 
+    public function orderStatus()
+    {
+        $orders = Order::with(['customer','products'])->paginate(6);
+        return view('admin.order-details.order_status',['orders' => $orders]);
+    }
+
+    public function statusChange($orderId,$productId)
+    {
+        DB::table('order_products')->where('order_id',$orderId)->where('product_id',$productId)->update([
+            'payment_status'=>'deliverd',
+        ]);
+
+        return redirect()->back()->with('order','Order delivered successfully');
+    }
 }

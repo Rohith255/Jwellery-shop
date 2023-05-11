@@ -43,6 +43,7 @@
             <div class="collapse" id="student-detail">
                 <ul class="nav flex-column">
                     <li><a class="nav-link" href="{{route('admin.orders')}}">Purchased products</a></li>
+                    <li><a class="nav-link" href="{{route('admin.order-status')}}">Order status</a></li>
                     <li><a class="nav-link" href="{{route('admin.download-order')}}">Download Order details</a></li>
                 </ul>
             </div>

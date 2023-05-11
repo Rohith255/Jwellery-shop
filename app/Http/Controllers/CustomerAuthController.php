@@ -16,8 +16,8 @@ class CustomerAuthController extends Controller
     public function store(LoginRequest $request)
     {
         $request->validate([
-            'email'=>'required',
-            'password'=>'required'
+            'email'=>'required|email',
+            'password'=>'required|min:8'
         ]);
 
         if (Auth::guard('customer')->attempt($request->only(['email','password']))){
