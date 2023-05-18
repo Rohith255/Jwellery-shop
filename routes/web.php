@@ -40,6 +40,7 @@ Route::post('admin/logout',[AdminAuthController::class,'logout'])->name('admin.l
 
 Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::view('dashboard','admin.admin-dashboard')->name('admin.dashboard');
+    Route::get('home',[AdminController::class,'home'])->name('admin.home');
     Route::get('customer/list',[AdminController::class,'customerList'])->name('admin.customer.list');
     Route::delete('customer/delete/{id}',[AdminController::class,'delete'])->name('admin.customer.delete');
     Route::get('add-product',[AdminController::class,'addProduct'])->name('admin.addProduct');
@@ -52,6 +53,7 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::get('order-details/download',[AdminController::class,'orderDownload'])->name('admin.download-order');
     Route::get('order-status',[AdminController::class,'orderStatus'])->name('admin.order-status');
     Route::post('status/{orderId}/change/{productId}',[AdminController::class,'statusChange'])->name('admin.status-change');
+    Route::post('customer-details/{id}',[AdminController::class,'customerDetails'])->name('admin.customer-details');
 });
 
 //
@@ -69,6 +71,7 @@ Route::get('category',[CustomerController::class,'category'])->name('customer.ca
 Route::get('products/{id}',[CustomerController::class,'products'])->name('customer.products');
 Route::get('view-product/{id}',[CustomerController::class,'viewProduct'])->name('customer.view.product');
 Route::get('all',[CustomerController::class,'allProduct'])->name('customer.all-product');
+Route::get('silver-products',[CustomerController::class,'silverProduct'])->name('silver-products');
 
 
 Route::prefix('customer')->middleware('Customer:customer')->group(function (){
@@ -85,6 +88,7 @@ Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::post('place-order',[CustomerController::class,'placeOrder'])->name('customer.order-place');
     Route::get('my-order',[CustomerController::class,'myOrder'])->name('customer.my-order');
     Route::delete('order/{orderId}/cancel/{productId}',[CustomerController::class,'orderCancel'])->name('customer.order-cancel');
+    Route::post('product/{productId}/customer/{customerId}',[CustomerController::class,'productReview'])->name('customer.product-review');
 });
 
 require __DIR__.'/auth.php';

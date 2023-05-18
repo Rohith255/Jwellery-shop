@@ -1,3 +1,10 @@
+@php
+
+    $one_gram = 6038;
+    $tax = 350;
+    $silver_one_gram = 83.50
+//    $total_price = $one_gram*$total_grams;
+@endphp
 <style>
     .tr-row:hover{
         border-radius: 10px;
@@ -23,7 +30,11 @@
                 <tr class="tr-row">
             <td><img src="{{asset('products/'.$product->product_name)}}.jpg" width="90%" height="60%" style="border: 1px solid silver;border-radius: 10px"></td>
             <td>{{$product->product_name}}</td>
-            <td>₨ 24,500</td>
+                    @if($product->metal_type=='silver')
+                        <td>₨. {{number_format($product->grams*$silver_one_gram*$product->pivot->quantity,2)}}</td>
+                    @else
+                        <td>₨. {{number_format($product->grams*$one_gram*$product->pivot->quantity+$tax,2)}}</td>
+                    @endif
             <td>
                 <div class="cart-button-01">
                     <div class="cart-button-02">

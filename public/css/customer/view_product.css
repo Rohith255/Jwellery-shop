@@ -87,6 +87,9 @@
     display: flex;
     align-items: center;
 }
+.product-cart-button a{
+    text-decoration: none;
+}
 .product-cart-button-01{
     width: 50%;
     height: 50%;
@@ -239,3 +242,74 @@
         font-size: 1rem;
     }
 }
+.review-section{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /*border: 1px solid red;*/
+}
+.review-box{
+    width: 100%;
+    height: 20%;
+    /*border: 1px solid black;*/
+}
+.review-box form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 1px solid red;*/
+}
+.review-box form input{
+    width: 20%;
+    height: 60%;
+    outline: none;
+    border: 1px solid  rgb(247,147,30);
+    border-radius: 10px;
+    padding-left: 8px;
+}
+.review-box form button{
+    width: 8%;
+    height: 60%;
+    border: none;
+    background:  rgb(247,147,30);
+    color: white;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+.comment-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.comment {
+    width: 50%;
+    border: 1px solid  rgb(247,147,30);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    margin-bottom: 10px;
+}
+
+.customer-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.review-content {
+    color: #555;
+    margin: 0;
+}
+

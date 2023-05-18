@@ -63,7 +63,7 @@
             <li><a href="{{route('customer.home')}}">Home</a></li>
             <li><a href="{{route('customer.all-product')}}">All Jwellery</a></li>
             <li><a href="{{route('customer.category')}}">Gold</a></li>
-            <li><a href="#">Silver</a></li>
+            <li><a href="{{route('silver-products')}}">Silver</a></li>
             <li><a href="#">Coins</a></li>
         </ul>
     </div>

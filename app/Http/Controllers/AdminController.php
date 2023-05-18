@@ -130,4 +130,15 @@ class AdminController extends Controller
 
         return redirect()->back()->with('order','Order delivered successfully');
     }
+
+    public function home()
+    {
+        return view('admin.home');
+    }
+
+    public function customerDetails($id)
+    {
+        $customers = Customer::with('orders.orderProducts.product')->findOrFail($id);
+        return view('admin.customer.customer-details',compact('customers'));
+    }
 }

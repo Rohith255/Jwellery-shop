@@ -33,7 +33,7 @@
                             <h3>:</h3>
                         </div>
                         <div class="product-details-box-04">
-                            <h3>₹.6038/GM(24KT)</h3>
+                            <h3>₹6038/GM(24KT)</h3>
                         </div>
                     </div>
                     <div class="product-details-box-02">
@@ -74,7 +74,7 @@
                                 $discount_value = $product_price*0.1;
                                 $discount_price = $product_price-$discount_value;
                             @endphp
-                            <h3>₹.{{$discount_price}}</h3>
+                            <h3>₹{{number_format($discount_price,2)}}</h3>
                         </div>
                     </div>
                 </div>
@@ -90,5 +90,27 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="review-section">
+<h1>Review</h1>
+    <div class="review-box">
+        <form method="post" action="{{route('customer.product-review',[$product->id,Auth::guard('customer')->id()])}}">
+            @csrf
+            <input type="text" placeholder="Product review" name="product_review">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="comment-section">
+    @foreach($reviews as $review)
+            <div class="comment">
+                <div class="comment-header">
+                    <h4 class="customer-name">Customer Name - {{$review->customer->name}}</h4>
+                </div>
+                <div class="comment-body">
+                    <p class="review-content">Review - {{$review->product_reviews}}</p>
+                </div>
+            </div>
+    @endforeach
     </div>
 </div>

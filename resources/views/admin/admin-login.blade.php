@@ -36,6 +36,16 @@
                             </div>
                         </form>
                     </div>
+                    @if (session('error'))
+                        <div class="alert alert-fill-danger">
+                            {{ session('error') }}
+                        </div>
+                        <script>
+                            setTimeout(function() {
+                                $('.alert').fadeOut('fast');
+                            }, 4000);
+                        </script>
+                    @endif
                 </div>
             </div>
         </div>

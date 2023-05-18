@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -101,7 +102,9 @@ class CustomerController extends Controller
     {
         $product = Product::find($id);
 
-        return view('customers.view_product_page',['product'=>$product]);
+        $reviews = ProductReview::where('product_id',$id)->with('customer')->get();
+
+        return view('customers.view_product_page',['product'=>$product,'reviews'=>$reviews]);
     }
 
     public function cart()
@@ -254,5 +257,23 @@ class CustomerController extends Controller
         $product_order = $order->products->where('id', $productId)->first()->pivot;
         $product_order->delete();
         return redirect()->route('customer.my-order')->with('deleted','Product cancelled successfully');;
+    }
+
+    public function productReview(Request $request,$productId,$customerId)
+    {
+        ProductReview::create([
+            'product_reviews'=>$request->input('product_review'),
+            'product_id'=>$productId,
+            'customer_id'=>$customerId,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function silverProduct()
+    {
+        $products = Product::where('metal_type','silver')->get();
+
+        return view('customers.all_product_page',['products'=>$products]);
     }
 }

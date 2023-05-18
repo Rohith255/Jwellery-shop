@@ -15,7 +15,7 @@ class AdminAuthController extends Controller
     public function store(LoginRequest $request)
     {
         if (Auth::guard('admin')->attempt($request->only(['email','password']))){
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.home');
         }
         return redirect()->route('admin.login')->with('error','Invalid credentials');
     }

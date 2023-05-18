@@ -23,4 +23,10 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class,'order_products')->withPivot(['quantity','amount','invoice_number','order_date','delivery_date','payment_mode','payment_status','delivery_address']);
     }
+
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
 }

@@ -12,7 +12,6 @@
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
-            <th>DOB</th>
             <th>Mobile</th>
             <th>Address</th>
             <th>Action</th>
@@ -22,10 +21,13 @@
             <td>{{$customer->id}}</td>
             <td>{{$customer->name}}</td>
             <td>{{$customer->email}}</td>
-            <td>{{$customer->dob}}</td>
             <td>{{$customer->mobile}}</td>
             <td>{{$customer->address}}</td>
-            <td>
+            <td class="d-flex justify-content-evenly">
+                <form method="post" action="{{route('admin.customer-details',$customer->id)}}">
+                    @csrf
+                    <input type="submit" class="btn btn-primary" value="Details">
+                </form>
                 <form method="post" action="{{route('admin.customer.delete',$customer->id)}}">
                     @method('DELETE')
                     @csrf
