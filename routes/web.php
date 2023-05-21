@@ -72,6 +72,9 @@ Route::get('products/{id}',[CustomerController::class,'products'])->name('custom
 Route::get('view-product/{id}',[CustomerController::class,'viewProduct'])->name('customer.view.product');
 Route::get('all',[CustomerController::class,'allProduct'])->name('customer.all-product');
 Route::get('silver-products',[CustomerController::class,'silverProduct'])->name('silver-products');
+Route::get('temp',function (){
+    return 'temp';
+});
 
 
 Route::prefix('customer')->middleware('Customer:customer')->group(function (){
