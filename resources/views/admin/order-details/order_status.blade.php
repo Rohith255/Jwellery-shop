@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         @if(session('order'))
-            <div class="alert alert-warning mt-3 container" role="alert">
+            <div class="alert alert-success mt-3 container" role="alert">
                 <p>{{session('order')}}</p>
             </div>
         @endif

@@ -12,8 +12,8 @@
                 </div>
             @endif
     <h3 class="text-center mt-3 container text-primary">Product List</h3>
-    <table class="table table-striped table-bordered container">
-        <tr>
+    <table class="table table-bordered container">
+        <tr class="bg-inverse-warning">
             <th>Id</th>
             <th>Product image</th>
             <th>Product name</th>
@@ -30,12 +30,12 @@
             <td>{{$product->category->categories_name}}</td>
             <td>{{$product->metal_type}}</td>
             <td>{{$product->grams}}</td>
-            <td class="d-flex justify-content-between">
-                <form method="post" action="{{route('product.update.page',$product->id)}}">
+            <td class="h-100 d-flex justify-content-between align-center">
+                <form method="post" action="{{route('product.update.page',$product->id)}}" class="w-50">
                     @csrf
                     <input type="submit" class="btn btn-inverse-primary" value="Update">
                 </form>
-                <form method="post" action="{{route('product.delete',$product->id)}}">
+                <form method="post" action="{{route('product.delete',$product->id)}}" class="w-50">
                     @method('DELETE')
                     @csrf
                     <input type="submit" class="btn btn-inverse-danger" value="Delete">

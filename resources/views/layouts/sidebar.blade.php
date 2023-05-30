@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas border-right-lg" id="sidebar" style="padding-top: 8%;">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('admin.home')}}">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -17,7 +17,7 @@
                 <ul class="nav flex-column">
                     <li><a class="nav-link" href="{{route('admin.addProduct')}}">Add product</a></li>
                     <li><a class="nav-link" href="{{route('product.view')}}">Product list</a></li>
-{{--                    <li><a class="nav-link" href="{{route('admin.product-review')}}">Product review</a></li>--}}
+                    <li><a class="nav-link" href="{{route('admin.product-review')}}">Product review</a></li>
                 </ul>
             </div>
         </li>

@@ -1,10 +1,12 @@
 @extends('admin.admin-dashboard')
 @section('content')
+    <div class="container">
     @if(session('product-added'))
         <div class="alert alert-warning mt-3 container" role="alert">
             <p>{{session('product-added')}}</p>
         </div>
     @endif
+    </div>
     <h2 class="text-center mt-3 text-primary">Add Product</h2>
     <form class="container w-75 mt-4" action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -33,6 +35,11 @@
             </div>
         </div>
         <div class="row mt-4">
+            <div class="col">
+                <label for="serial_number" class="form-label">Serial Number</label>
+                <input type="text" class="form-control h-50 w-100" placeholder="serial_number" name="serial_number" required>
+                <p style="color: red">@error('serial_number'){{$message}}@enderror</p>
+            </div>
             <div class="col">
                 <label for="gram" class="form-label">Weight</label>
                 <input type="number" step="0.01" class="form-control h-50 w-100" placeholder="gram" name="grams" required>

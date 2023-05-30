@@ -31,6 +31,7 @@ class AdminController extends Controller
             'product_name'=>'required',
             'product_image'=>'required',
             'category_id'=>'required',
+            'serial_number'=>'required',
             'metal_type'=>'required',
             'grams'=>'required'
         ]);
@@ -41,6 +42,7 @@ class AdminController extends Controller
             'product_name'=>$request->input('product_name'),
             'product_img'=>$name,
             'category_id'=>$request->input('category_id'),
+            'serial_number'=>$request->input('serial_number'),
             'metal_type'=>$request->input('metal_type'),
             'grams'=>$request->input('grams')
         ]);
@@ -53,7 +55,7 @@ class AdminController extends Controller
 
     public function productView()
     {
-        $products = Product::with('category')->paginate(8);
+        $products = Product::with('category')->paginate(2);
         return view('admin.product.display-products',['products'=>$products]);
     }
 
@@ -125,7 +127,7 @@ class AdminController extends Controller
     public function statusChange($orderId,$productId)
     {
         DB::table('order_products')->where('order_id',$orderId)->where('product_id',$productId)->update([
-            'payment_status'=>'deliverd',
+            'payment_status'=>'DELIVERED',
         ]);
 
         return redirect()->back()->with('order','Order delivered successfully');
@@ -140,5 +142,11 @@ class AdminController extends Controller
     {
         $customers = Customer::with('orders.orderProducts.product')->findOrFail($id);
         return view('admin.customer.customer-details',compact('customers'));
+    }
+
+    public function productReview()
+    {
+        $customer = Customer::with('productReview.product')->get();
+        return view('admin.product.product-review',['customers'=>$customer]);
     }
 }

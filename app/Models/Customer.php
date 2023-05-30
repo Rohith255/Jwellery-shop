@@ -43,7 +43,7 @@ class Customer extends Authenticatable
     }
 
 
-    public function reviews(){
+    public function productReview(){
         return $this->hasMany(ProductReview::class);
     }
 }

@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::get('order-status',[AdminController::class,'orderStatus'])->name('admin.order-status');
     Route::post('status/{orderId}/change/{productId}',[AdminController::class,'statusChange'])->name('admin.status-change');
     Route::post('customer-details/{id}',[AdminController::class,'customerDetails'])->name('admin.customer-details');
+    Route::get('product/review',[AdminController::class,'productReview'])->name('admin.product-review');
 });
 
 
