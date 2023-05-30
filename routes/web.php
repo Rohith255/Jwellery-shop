@@ -56,8 +56,6 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
     Route::post('customer-details/{id}',[AdminController::class,'customerDetails'])->name('admin.customer-details');
 });
 
-//
-
 
 //Customer - routes
 
