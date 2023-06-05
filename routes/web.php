@@ -17,20 +17,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 //Admin - routes
 
 Route::get('admin/login',[AdminAuthController::class,'login'])->name('admin.login');
@@ -60,18 +46,22 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
 
 //Customer - routes
 
-Route::get('customer-login',[CustomerAuthController::class,'login'])->name('customer.login');
-Route::post('customer-store',[CustomerAuthController::class,'store'])->name('customer.store');
-Route::get('customer-logout',[CustomerAuthController::class,'logout'])->name('customer.logout');
-Route::get('customer-register',[CustomerController::class,'index'])->name('customer.register');
-Route::post('customer-store-user',[CustomerController::class,'store'])->name('customer.store.user');
+Route::prefix('customer')->group(function (){
+    Route::get('login',[CustomerAuthController::class,'login'])->name('customer.login');
+    Route::post('store',[CustomerAuthController::class,'store'])->name('customer.store');
+    Route::get('logout',[CustomerAuthController::class,'logout'])->name('customer.logout');
+    Route::get('register',[CustomerController::class,'index'])->name('customer.register');
+    Route::post('store-user',[CustomerController::class,'store'])->name('customer.store.user');
+});
+
+
 Route::get('home',[CustomerController::class,'home'])->name('customer.home');
 Route::get('category',[CustomerController::class,'category'])->name('customer.category');
 Route::get('products/{id}',[CustomerController::class,'products'])->name('customer.products');
 Route::get('view-product/{id}',[CustomerController::class,'viewProduct'])->name('customer.view.product');
 Route::get('all',[CustomerController::class,'allProduct'])->name('customer.all-product');
 Route::get('silver-products',[CustomerController::class,'silverProduct'])->name('silver-products');
-
+Route::get('coins',[CustomerController::class,'coins'])->name('customer.coins');
 
 Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::get('profile',[CustomerController::class,'profile'])->name('customer.profile');

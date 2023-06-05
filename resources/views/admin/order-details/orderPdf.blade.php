@@ -29,19 +29,19 @@
         background-color: #f2f2f2;
     }
 </style>
-<div class="container">
+<div>
     <h3 class="text-center mt-3 text-primary">Sahana Jewels - Order details</h3>
-    <table class="table table-striped table-bordered container" style="border: 1px solid black">
+    <table class="table table-bordered" style="border: 1px solid black">
         <tr>
-            <th>Customer name</th>
-            <th>Product name</th>
+            <th>Customer</th>
+            <th>Product</th>
             <th>Metal type</th>
             <th>Weight</th>
             <th>Amount</th>
             <th>Quantity</th>
-            <th>Order date</th>
-            <th>Delivery date</th>
-            <th>Invoice number</th>
+            <th>Ordered</th>
+            <th>Delivered</th>
+            <th>Invoice</th>
         </tr>
         @foreach($orders as $order)
             @foreach($order->products as $products)

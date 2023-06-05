@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/customer/customer-navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/customer/profile.css')}}">
     <link rel="stylesheet"href="{{asset('css/customer/my-cart.css')}}">
-    <title>Document</title>
+    <title>My Cart</title>
 </head>
 <body>
 @include('customers.navbar')

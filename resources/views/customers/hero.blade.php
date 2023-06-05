@@ -51,7 +51,7 @@
                 <p>Necklace</p>
             </div>
         </a>
-        <a href="{{route('customer.products',5)}}" style="text-decoration: none">
+        <a href="{{route('customer.products',4)}}" style="text-decoration: none">
             <div class="category-card">
                 <img src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGVhcnJpbmdzfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60" width="100%" height="82%">
                 <p>Earrings</p>
@@ -65,10 +65,10 @@
                 <p>Chain</p>
             </div>
         </a>
-        <a href="{{route('customer.products',4)}}" style="text-decoration: none">
+        <a href="{{route('customer.products',5)}}" style="text-decoration: none">
             <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z29sZCUyMGJyYWNlbGV0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60" width="100%" height="82%">
-                <p>Bracelet</p>
+                <img src="https://images.unsplash.com/photo-1517097473408-c0d7983cb95c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" width="100%" height="82%">
+                <p>Coins</p>
             </div>
         </a>
         <a href="{{route('customer.products',2)}}" style="text-decoration: none">

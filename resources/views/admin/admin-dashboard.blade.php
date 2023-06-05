@@ -1,6 +1,18 @@
+<?php
+use Illuminate\Support\Carbon;
+
+$currentHour = Carbon::now('Asia/kolkata')->hour;
+
+if ($currentHour >= 5 && $currentHour < 12) {
+    $msg = 'Good Morning';
+} elseif ($currentHour >= 12 && $currentHour < 18) {
+    $msg = 'Good Afternoon';
+} else {
+    $msg = 'Good Evening';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -35,17 +47,15 @@
             </div>
             <div>
                 <a class="navbar-brand brand-logo" href="#">
-                    <img src="{{asset('star/images/logo.svg')}}" alt="logo"/>
-                </a>
-                <a class="navbar-brand brand-logo-mini" href="#">
                     <img src="{{asset('star/images/logo-mini.svg')}}" alt="logo"/>
+                    Admin
                 </a>
             </div>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-top">
             <ul class="navbar-nav">
                 <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                    <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">{{\Illuminate\Support\Facades\Auth::guard('admin')->user()->name}}</span></h1>
+                    <h1 class="welcome-text">{{$msg}}, <span class="text-black fw-bold">{{\Illuminate\Support\Facades\Auth::guard('admin')->user()->name}}</span></h1>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

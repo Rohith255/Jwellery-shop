@@ -95,11 +95,13 @@
 <div class="review-section">
 <h1>Review</h1>
     <div class="review-box">
+        @if(Auth::guard('customer')->check())
         <form method="post" action="{{route('customer.product-review',[$product->id,Auth::guard('customer')->id()])}}">
             @csrf
             <input type="text" placeholder="Product review" name="product_review">
             <button type="submit">Submit</button>
         </form>
+        @endif
     </div>
     <div class="comment-section">
     @foreach($reviews as $review)

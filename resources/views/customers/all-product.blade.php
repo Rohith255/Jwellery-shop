@@ -1,6 +1,6 @@
 <div class="product-details">
     <div class="product-header">
-        <h3>Silver</h3>
+        <h3>Products</h3>
     </div>
     <div class="product-row">
         @foreach($products as $product)

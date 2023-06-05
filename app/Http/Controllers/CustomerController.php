@@ -276,4 +276,11 @@ class CustomerController extends Controller
 
         return view('customers.all_product_page',['products'=>$products]);
     }
+
+    public function coins()
+    {
+        $category = Category::with('products')->find(5);
+
+        return view('customers.product_page',['category'=>$category]);
+    }
 }

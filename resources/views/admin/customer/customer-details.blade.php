@@ -28,38 +28,47 @@
         margin-top: 8px;
     }
 
+    tr{
+        height: 10px;
+    }
+
 </style>
 
 @extends('admin.admin-dashboard')
 @section('content')
-    <div class="container">
-        <h3 class="text-center mt-3 container text-primary">Customer Details</h3>
-        <div class="flex-wrap">
-        <div class="card">
+    <h3 class="text-center mt-3 container text-primary">Customer Details</h3>
+    <div class="d-flex">
+        <div class="flex justify-content-between">
+        <div class="card" style="width: 100%;">
             <div class="card-header">
                 <h3 class="customer-name">{{$customers->name}}</h3>
             </div>
             <div class="card-body">
-                <p class="customer-email">Email: {{$customers->email}}</p>
-                <p class="customer-dob">Date of Birth: 1990-01-01</p>
-                <p class="customer-mobile">Mobile: {{$customers->mobile}}</p>
-                <p class="customer-address">Address: {{$customers->address}}</p>
+                <p class="customer-email">Email:<br><span class="text-primary">{{$customers->email}}</span></p>
+                <p class="customer-dob">Date of Birth:<br><span class="text-primary"> 1990-01-01</span></p>
+                <p class="customer-mobile">Mobile:<br><span class="text-primary"> {{$customers->mobile}}</span></p>
+                <p class="customer-address">Address: <br><span class="text-primary">{{$customers->address}}</span></p>
             </div>
         </div>
         </div>
-        <table class="table table-striped table-bordered container w-100">
-            <tr>
+        <div style="margin-left: 2%;" class="container">
+        <table class="table table-bordered">
+            <tr class="bg-gradient-secondary">
                 <th>Product name</th>
                 <th>Quantity</th>
                 <th>Invoice</th>
                 <th>Price</th>
                 <th>Order date</th>
-                <th>Delivery date</th>
-                <th>Payment status</th>
+                <th>Delivery</th>
+                <th>Payment</th>
             </tr>
             @foreach($customers->orders as $order)
                 @foreach($order->orderProducts as $order_product)
-            <tr>
+            <tr @if($order_product->payment_status=='PENDING')
+                    class="bg-inverse-danger border-secondary"
+                @else
+                    class="bg-inverse-info border-secondary"
+                @endif>
                 <td>{{$order_product->product->product_name}}</td>
                 <td>{{$order_product->quantity}}</td>
                 <td>{{$order_product->invoice_number}}</td>
@@ -71,5 +80,7 @@
                 @endforeach
             @endforeach
         </table>
+        </div>
     </div>
+
 @endsection

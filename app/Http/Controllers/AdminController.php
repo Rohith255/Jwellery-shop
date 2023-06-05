@@ -120,7 +120,7 @@ class AdminController extends Controller
 
     public function orderStatus()
     {
-        $orders = Order::with(['customer','products'])->paginate(6);
+        $orders = Order::with(['customer','products'])->paginate(4);
         return view('admin.order-details.order_status',['orders' => $orders]);
     }
 
@@ -141,12 +141,13 @@ class AdminController extends Controller
     public function customerDetails($id)
     {
         $customers = Customer::with('orders.orderProducts.product')->findOrFail($id);
+
         return view('admin.customer.customer-details',compact('customers'));
     }
 
     public function productReview()
     {
-        $customer = Customer::with('productReview.product')->get();
+        $customer = Customer::with('productReview.product')->paginate(1);
         return view('admin.product.product-review',['customers'=>$customer]);
     }
 }
