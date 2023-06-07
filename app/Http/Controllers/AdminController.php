@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function customerList(){
-        $customers = Customer::all();
+        $customers = Customer::paginate(4);
         return view('admin.customer.customer-list',['customers'=>$customers]);
     }
     public function delete($id){
         $customer = Customer::find($id);
         $customer->delete();
-        return redirect()->route('admin.customer.list')->with('deleted','Customer deleted successfully');
+        return redirect()->back()->with('deleted','Customer deleted successfully');
     }
 
     public function addProduct(){

@@ -1,7 +1,12 @@
 <div class="cart-details">
     <div class="cart-box">
         <div class="cart-img">
-            <img src="{{asset('products/'.$product->product_name)}}.jpg" width="90%" height="60%" style="border: 1px solid goldenrod">
+            <img src="{{asset('products/'.$product->product_name)}}.jpg" width="90%" height="60%"
+                 style="@if($product->metal_type=='gold')
+            border: 1px solid goldenrod;
+            @else
+                border:1px solid silver;
+            @endif">
         </div>
         <div class="cart-product-details">
             <div class="product-detail-header">
@@ -33,7 +38,12 @@
                             <h3>:</h3>
                         </div>
                         <div class="product-details-box-04">
-                            <h3>₹6038/GM(24KT)</h3>
+                            <h3>@if($product->metal_type=='gold')
+                                    ₹6038/GM(24KT)
+                                @else
+                                    ₹150/GM
+                                @endif
+                            </h3>
                         </div>
                     </div>
                     <div class="product-details-box-02">
@@ -51,7 +61,12 @@
                             <h3>:</h3>
                         </div>
                         <div class="product-details-box-04">
-                            <h3>₹.{{6038*$product->grams}}</h3>
+                            <h3>@if($product->metal_type=='gold')
+                                    ₹.{{6038*$product->grams}}
+                                @else
+                                    ₹.{{150*$product->grams}}
+                                @endif
+                            </h3>
                         </div>
                     </div>
                     <div class="product-details-box-02">
@@ -74,7 +89,17 @@
                                 $discount_value = $product_price*0.1;
                                 $discount_price = $product_price-$discount_value;
                             @endphp
-                            <h3>₹{{number_format($discount_price,2)}}</h3>
+                            <h3>@if($product->metal_type=='gold')
+                                    ₹{{number_format($discount_price,2)}}
+                                @else
+                                    @php
+                                        $silver_product = 150*$product->grams;
+                                        $silver_discount = $silver_product*0.1;
+                                        $silver_price = $silver_product-$silver_discount;
+                                    @endphp
+                                    ₹{{number_format($silver_price,2)}}
+                                @endif
+                            </h3>
                         </div>
                     </div>
                 </div>
@@ -93,18 +118,21 @@
     </div>
 </div>
 <div class="review-section">
-<h1>Review</h1>
+    <h1>Review</h1>
     <div class="review-box">
         @if(Auth::guard('customer')->check())
-        <form method="post" action="{{route('customer.product-review',[$product->id,Auth::guard('customer')->id()])}}">
-            @csrf
-            <input type="text" placeholder="Product review" name="product_review">
-            <button type="submit">Submit</button>
-        </form>
+            <form method="post" action="{{route('customer.product-review',[$product->id,Auth::guard('customer')->id()])}}">
+                @csrf
+                <input type="text" placeholder="Product review" name="product_review">
+                <button type="submit">Submit</button>
+            </form>
         @endif
     </div>
-    <div class="comment-section">
-    @foreach($reviews as $review)
+    @if($reviews=='[]')
+        <p>No reviews :( </p>
+    @else
+        <div class="comment-section">
+        @foreach($reviews as $review)
             <div class="comment">
                 <div class="comment-header">
                     <h4 class="customer-name">Customer Name - {{$review->customer->name}}</h4>
@@ -113,6 +141,7 @@
                     <p class="review-content">Review - {{$review->product_reviews}}</p>
                 </div>
             </div>
-    @endforeach
+        @endforeach
     </div>
 </div>
+@endif

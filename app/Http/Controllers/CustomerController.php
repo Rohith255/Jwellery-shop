@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\OrderMailJob;
+use App\Mail\PlaceOrder;
+use App\Mail\PlaceOrders;
 use App\Models\Cart;
 use App\Models\CartProduct;
 use App\Models\Category;
@@ -15,6 +18,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerController extends Controller
 {
@@ -25,7 +29,7 @@ class CustomerController extends Controller
 
         $request->validate([
             'name'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:customers',
             'mobile'=>'required|digits:10',
             'dob'=>'required|date',
             'address'=>'required',
@@ -45,7 +49,7 @@ class CustomerController extends Controller
             'customer_id' => $customer->id,
         ]);
 
-        return redirect()->route('customer.login');
+        return redirect()->route('customer.login')->with('account-created','Account Created Successfully');
     }
     public function home()
     {
@@ -58,27 +62,37 @@ class CustomerController extends Controller
     }
     public function update(Request $request)
     {
-        $request->validate([
+       $var =  $request->validate([
             'name'=>'required',
             'email'=>'required',
             'mobile'=>'required',
             'address'=>'required',
             'dob'=>'required',
-            'password'=>'required',
         ]);
+
+
 
         $customer = Customer::find(Auth::guard('customer')->id());
 
         $mobile = $request->input('mobile');
+
         $customer->update([
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'mobile'=>$mobile,
             'address'=>$request->input('address'),
             'dob'=>$request->input('dob'),
-            'password'=>Hash::make($request->input('password'))
         ]);
-        return redirect()->route('customer.profile');
+
+        if ($request->input('password')){
+            $customer->update([
+                'password'=>$request->input('password')
+            ]);
+        }
+
+        return redirect()->route('customer.profile')->with('updated','Profile has been updated');
+
+
     }
     public function delete(){
         $customer = Customer::find(Auth::guard('customer')->id());
@@ -238,6 +252,15 @@ class CustomerController extends Controller
 
         DB::table('cart_product')->where('cart_id',$cart->id)->delete();
 
+        $email = Customer::find(Auth::guard('customer')->id());
+
+        $recent_order = Order::find($order->id);
+
+        $email_send = $email->email;
+
+
+        OrderMailJob::dispatch($recent_order,$email_send);
+
         return redirect()->route('customer.my-order')->with('placed','Order Placed Successfully!');
     }
 
@@ -245,7 +268,6 @@ class CustomerController extends Controller
     {
 
         $orders = Order::where('customer_id',Auth::guard('customer')->id())->with('products')->get();
-
 
         return view('customers.my-cart_page',['orders'=>$orders]);
     }

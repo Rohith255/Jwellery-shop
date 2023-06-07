@@ -4,7 +4,7 @@
     </div>
     <div class="profile-details">
         <form method="post" action="{{route('customer.update')}}">
-            @method('PUT')
+            @method('PATCH')
             @csrf
             <div class="profile-details-01">
                 <label for="name">Name</label>
@@ -33,8 +33,7 @@
             </div>
             <div class="profile-details-01">
                 <label for="password">Password</label>
-                <input type="password" name="password" required>
-                <p style="color: red">@error('password'){{$message}}@enderror</p>
+                <input type="password" name="password">
             </div>
             <div class="profile-details-button">
                 <button type="submit">Update</button>
@@ -50,3 +49,14 @@
         </form>
     </div>
 </div>
+
+@if (session('updated'))
+    <div class="alert alert-success">
+        {{ session('updated') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            $('.alert').fadeOut('fast');
+        }, 4000);
+    </script>
+@endif

@@ -28,7 +28,7 @@
                     @csrf
                     <input type="submit" class="btn btn-primary" value="Details">
                 </form>
-                <form method="post" action="{{route('admin.customer.delete',$customer->id)}}">
+                <form method="post" action="{{route('admin.customer.delete',$customer->id)}}" style="margin-left: 6px">
                     @method('DELETE')
                     @csrf
                     <input type="submit" class="btn btn-danger" value="Delete">
@@ -37,5 +37,6 @@
         </tr>
         @endforeach
     </table>
+        <p style="padding-left: 10px">{{$customers->links()}}</p></div>
     </div>
 @endsection

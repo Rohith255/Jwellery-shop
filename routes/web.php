@@ -65,7 +65,7 @@ Route::get('coins',[CustomerController::class,'coins'])->name('customer.coins');
 
 Route::prefix('customer')->middleware('Customer:customer')->group(function (){
     Route::get('profile',[CustomerController::class,'profile'])->name('customer.profile');
-    Route::put('profile-update',[CustomerController::class,'update'])->name('customer.update');
+    Route::patch('profile-update',[CustomerController::class,'update'])->name('customer.update');
     Route::delete('customer-delete',[CustomerController::class,'delete'])->name('customer.delete');
     Route::get('cart',[CustomerController::class,'cart'])->name('customer.cart');
     Route::post('add-cart/{id}',[CustomerController::class,'addCart'])->name('customer.add-cart');

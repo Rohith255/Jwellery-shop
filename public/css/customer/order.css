@@ -111,94 +111,58 @@
     align-items: center;
     justify-content: space-between;
 }
-@media (max-width: 600px) {
-    .order-box{
-        padding-top: 15vh;
-        flex-direction: column;
-    }
 
-    .order-box-01{
-        width: 100%;
-        height: auto;
-        border: none;
-    }
-
-    .order-box-01 form{
-        width: 100%;
-        margin: 0;
-        border: none;
-        border-bottom: 1px solid silver;
-    }
-
-    .order-box-01 form button{
-        margin-left: 0;
-    }
-
-    .order-box-details{
-        width: 100%;
-        margin-top: 50px;
-    }
-}
 @media screen and (max-width: 600px) {
+
+    /* Collapse the order box into a single column */
     .order-box {
-        flex-direction: column;
-        align-items: center;
-        padding-top: 29vh;
-        height: auto;
-    }
-
-    .order-box-01 {
         width: 100%;
-        height: 20vh;
-        margin-bottom: 30px;
-        border-right: none;
+        height: 100vh;
+       flex-direction: column;
+        /*align-items: center;*/
+        /*justify-content: center;*/
+        padding-top: 30vh;
     }
 
-    .order-box-01 form {
+    /* Align the order box form and details side-by-side */
+    .order-box-01,
+    .order-box-details {
+        width: 80%;
+        border: 1px solid red;
+        height: 100%;
+        margin-left: 0%;
+    }
+
+    /* Remove the border between the order box form and details */
+    .order-box-01 form,
+    .order-box-details {
+        border: none;
+    }
+
+    /* Collapse the form rows into a single column */
+    .form-row,
+    .form-row-01 {
         width: 100%;
         height: auto;
-        margin-left: 0;
-        border-right: none;
-        border-bottom: 1px solid silver;
-    }
-
-    .form-row {
+        display: flex;
         flex-direction: column;
-        height: auto;
-        margin-top: 20px;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-around;
     }
 
+    /* Resize the form inputs and select elements */
     .form-row input,
     .form-row select {
-        width: 50%;
-        height: 45%;
-        margin-bottom: 10px;
+        width: 100%;
+        height: 32px;
+        padding-left: 8px;
+        outline: none;
+        border: 1px solid silver;
+        border-radius: 4px;
     }
 
+    /* Move the form button to the bottom of the form */
     .order-box-01 form button {
-        width: 100%;
-        margin-left: 0;
+        margin-top: 0;
     }
 
-    .order-box-details {
-        width: 100%;
-        height: auto;
-        margin-top: 30px;
-    }
-
-    .order-box-details-01 {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .order-box-details-01 p {
-        margin-bottom: 10px;
-    }
-
-    .order-box-details-02 p {
-        margin-left: 0;
-    }
 }

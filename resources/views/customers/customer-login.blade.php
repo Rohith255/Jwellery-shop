@@ -49,6 +49,16 @@
                 }, 4000);
             </script>
         @endif
+        @if (session('account-created'))
+            <div class="alt alt-success">
+                {{ session('account-created') }}
+            </div>
+            <script>
+                setTimeout(function() {
+                    $('.alert').fadeOut('fast');
+                }, 4000);
+            </script>
+        @endif
     </div>
 </div>
 </body>

@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
          $product_count = Product::count();
          $customer_count = Customer::count();
-         $order_count = \DB::table('order_products')->count();
+         $order_count = \DB::table('order_products')->where('payment_status','DELIVERED')->count();
          $pending_count = \DB::table('order_products')->where('payment_status','PENDING')->count();
          $cart_count = \DB::table('cart_Product')->count();
 
