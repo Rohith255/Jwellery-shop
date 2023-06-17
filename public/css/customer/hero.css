@@ -1,0 +1,128 @@
+.hero-img{
+    padding-top: 27vh;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-card {
+    width: 80%;
+    height: 18%;
+    border-radius: 30px;
+    margin-top: -2%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgb(247,147,30) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.hero-card-01{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+}
+.hero-card-details{
+    width: 20%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+    border-right: 1px solid rgb(247,147,30);
+}
+.category{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.category-header{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    color: rgb(247,147,30);
+    padding-top: 0%;
+}
+.category-card-01{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.category-card{
+    width: 14%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(247,147,30);
+    border: 1px solid silver;
+    border-radius: 20px;
+}
+.category-card a{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    font-family: Calibri;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.category-card img{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.category-card p{
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    margin-top: 4px;
+    text-decoration: none;
+}
+
+
+@media (max-width: 767px) {
+    /* Adjustments for smaller screens */
+
+    .hero-img {
+        height: 50vh;
+        /*padding-top: 5vh;*/
+    }
+
+    .hero-card {
+        width: 90%;
+    }
+
+    .hero-card-01 {
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-card-details {
+        width: 40%;
+        height: 40%;
+    }
+    .hero-card-details p{
+        display: none;
+    }
+
+    .category {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .category-card-01 {
+        flex-wrap: wrap;
+    }
+
+    .category-card {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+}

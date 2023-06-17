@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 30px auto;
+    width: 80%;
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    color:rgb(247,147,30) ;
+}
+tfoot td {
+    padding: 10px;
+    text-align: right;
+}
+
+.remove-btn {
+    background-color: #ff0000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+td button{
+    background-color: rgb(247,147,30);
+    border:none;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+}
+.vslue{
+    width: 30px;
+    background-color: white;
+}
+.operator-math{
+    width: 20px;
+    height: 25px;
+    color: white;
+    border-radius:8px;
+    background-color: black;
+}
+.cart-button-02{
+    display: flex;
+}
+.cart-button-02 button{
+    cursor: pointer;
+}
+.quantity-vslue{
+    width: 12%;
+    /*border-radius: 4px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: whitesmoke;*/
+    /*border: 1px solid silver;*/
+}
+@media only screen and (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+    thead th {
+        font-size: 14px;
+        padding: 5px;
+    }
+    tbody td {
+        font-size: 14px;
+        padding: 5px;
+    }
+    .remove-btn {
+        font-size: 14px;
+        padding: 3px 5px;
+    }
+    td img {
+        max-width: 80px;
+        max-height: 80px;
+    }
+    .value, .operator {
+        width: 20px;
+        font-size: 12px;
+    }
+}
+
+.alert {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 0;
+    left: 8px;
+    animation-duration: 0.5s;
+    animation-name: slidein;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+
+
+.alert-danger {
+    color: whitesmoke;
+    background-color: red;
+    border-color: red;
+}
+
+@keyframes slidein {
+    from {
+        bottom: -50px;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
