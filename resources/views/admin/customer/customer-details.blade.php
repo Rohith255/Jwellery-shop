@@ -62,7 +62,7 @@
                 <th>Delivery</th>
                 <th>Payment</th>
             </tr>
-            @foreach($customers->orders as $order)
+            @foreach($customer_details->orders as $order)
                 @foreach($order->orderProducts as $order_product)
             <tr @if($order_product->payment_status=='PENDING')
                     class="bg-inverse-danger border-secondary"

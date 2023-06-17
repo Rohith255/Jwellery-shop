@@ -53,12 +53,12 @@ class CustomerController extends Controller
     }
     public function home()
     {
-        return view('customers.home');
+        return view('customers.hero');
     }
     public function profile()
     {
         $customer = Customer::find(Auth::guard('customer')->id());
-        return view('customers.profile_page',['customer'=>$customer]);
+        return view('customers.profile',['customer'=>$customer]);
     }
     public function update(Request $request)
     {
@@ -102,14 +102,14 @@ class CustomerController extends Controller
 
     public function category()
     {
-        return view('customers.category_page');
+        return view('customers.category');
     }
 
     public function products($id)
     {
         $category = Category::with('products')->findOrFail($id);
 
-        return view('customers.product_page',['category'=>$category]);
+        return view('customers.product',['category'=>$category]);
     }
 
     public function viewProduct($id)
@@ -118,14 +118,14 @@ class CustomerController extends Controller
 
         $reviews = ProductReview::where('product_id',$id)->with('customer')->get();
 
-        return view('customers.view_product_page',['product'=>$product,'reviews'=>$reviews]);
+        return view('customers.view_product',['product'=>$product,'reviews'=>$reviews]);
     }
 
     public function cart()
     {
         $cart = Cart::where('customer_id',Auth::guard('customer')->id())->with('products')->get();
 
-        return view('customers.cart_page',['cart'=>$cart]);
+        return view('customers.cart',['cart'=>$cart]);
     }
     public function addCart($id)
     {
@@ -201,7 +201,7 @@ class CustomerController extends Controller
     public function allProduct()
     {
         $products = Product::all();
-        return view('customers.all_product_page',['products'=>$products]);
+        return view('customers.all_product',['products'=>$products]);
     }
 
     public function checkoutPage($id)
@@ -220,11 +220,19 @@ class CustomerController extends Controller
             }
         }
 
-        return view('customers.order_page',['cart_user'=>$cart_user,'quantity'=>$quantity,'grams'=>$grams]);
+        return view('customers.order',['cart_user'=>$cart_user,'quantity'=>$quantity,'grams'=>$grams]);
     }
 
     public function placeOrder(Request $request)
     {
+
+        $request->validate([
+            'mobile'=>'required',
+            'pincode'=>'required',
+            'region'=>'required',
+            'address'=>'required',
+        ]);
+
         $cart = Cart::where('customer_id',Auth::guard('customer')->id())->first();
 
         $order = new Order;
@@ -247,6 +255,9 @@ class CustomerController extends Controller
             $orderProduct->quantity = $product->pivot->quantity;
             $orderProduct->payment_mode = 'COD';
             $orderProduct->payment_status = 'PENDING';
+            $orderProduct->pincode = $request->pincode;
+            $orderProduct->mobile = $request->mobile;
+            $orderProduct->region = $request->region;
             $orderProduct->save();
         }
 
@@ -269,7 +280,7 @@ class CustomerController extends Controller
 
         $orders = Order::where('customer_id',Auth::guard('customer')->id())->with('products')->get();
 
-        return view('customers.my-cart_page',['orders'=>$orders]);
+        return view('customers.my-cart',['orders'=>$orders]);
     }
 
     public function orderCancel($orderId,$productId)
@@ -283,6 +294,11 @@ class CustomerController extends Controller
 
     public function productReview(Request $request,$productId,$customerId)
     {
+
+        $request->validate([
+            'product_review'=>'required'
+        ]);
+
         ProductReview::create([
             'product_reviews'=>$request->input('product_review'),
             'product_id'=>$productId,
@@ -296,13 +312,22 @@ class CustomerController extends Controller
     {
         $products = Product::where('metal_type','silver')->get();
 
-        return view('customers.all_product_page',['products'=>$products]);
+        return view('customers.all_product',['products'=>$products]);
     }
 
     public function coins()
     {
         $category = Category::with('products')->find(5);
 
-        return view('customers.product_page',['category'=>$category]);
+        return view('customers.product',['category'=>$category]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('input_search');
+
+        $result = DB::table('products')->select(['id','product_name'])->where('product_name','LIKE','%'.$query.'%')->get();
+
+        echo $result;
     }
 }

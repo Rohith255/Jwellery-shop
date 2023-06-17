@@ -45,7 +45,7 @@ Route::prefix('admin')->middleware('Admin:admin')->group(function (){
 
 
 //Customer - routes
-
+Route::post('/search',[CustomerController::class,'search'])->name('customer.search');
 Route::prefix('customer')->group(function (){
     Route::get('login',[CustomerAuthController::class,'login'])->name('customer.login');
     Route::post('store',[CustomerAuthController::class,'store'])->name('customer.store');
@@ -59,7 +59,7 @@ Route::get('home',[CustomerController::class,'home'])->name('customer.home');
 Route::get('category',[CustomerController::class,'category'])->name('customer.category');
 Route::get('products/{id}',[CustomerController::class,'products'])->name('customer.products');
 Route::get('view-product/{id}',[CustomerController::class,'viewProduct'])->name('customer.view.product');
-Route::get('all',[CustomerController::class,'allProduct'])->name('customer.all-product');
+Route::get('all/products',[CustomerController::class,'allProduct'])->name('customer.all-product');
 Route::get('silver-products',[CustomerController::class,'silverProduct'])->name('silver-products');
 Route::get('coins',[CustomerController::class,'coins'])->name('customer.coins');
 

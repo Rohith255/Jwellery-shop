@@ -26,11 +26,6 @@ tbody td {
     text-align: left;
     color:rgb(247,147,30) ;
 }
-
-input[type="number"] {
-    width: 50px;
-}
-
 tfoot td {
     padding: 10px;
     text-align: right;
@@ -43,10 +38,6 @@ tfoot td {
     cursor: pointer;
     padding: 5px 10px;
 }
-img{
-    max-width: 100px;
-    max-height: 100px;
-}
 td button{
     background-color: rgb(247,147,30);
     border:none;
@@ -54,13 +45,15 @@ td button{
     border-radius: 10px;
     color: white;
 }
-.value{
+.vslue{
     width: 30px;
     background-color: white;
 }
-.operator{
-    width: 30px;
+.operator-math{
+    width: 20px;
+    height: 25px;
     color: white;
+    border-radius:8px;
     background-color: black;
 }
 .cart-button-02{
@@ -94,7 +87,7 @@ td button{
         font-size: 14px;
         padding: 3px 5px;
     }
-    img {
+    td img {
         max-width: 80px;
         max-height: 80px;
     }

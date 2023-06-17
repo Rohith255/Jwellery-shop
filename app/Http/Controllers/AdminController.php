@@ -140,9 +140,10 @@ class AdminController extends Controller
 
     public function customerDetails($id)
     {
-        $customers = Customer::with('orders.orderProducts.product')->findOrFail($id);
+        $customers = Customer::findOrFail($id);
+        $customer_details = Customer::with('orders.orderProducts.product')->findOrFail($id);
 
-        return view('admin.customer.customer-details',compact('customers'));
+        return view('admin.customer.customer-details',compact('customers','customer_details'));
     }
 
     public function productReview()

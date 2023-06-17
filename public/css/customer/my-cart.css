@@ -22,7 +22,7 @@
     box-shadow: rgb(234, 174, 103) 0px 6px 12px -2px, rgb(225, 176, 117) 0px 3px 7px -3px;
 }
 
-.product-image {
+.product-image-01 {
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -30,7 +30,7 @@
     margin-right: 20px;
 }
 
-.product-image img {
+.product-image-01 img {
     width: 100%;
     height: auto;
 }
@@ -114,10 +114,9 @@
         margin-bottom: 10px;
     }
 
-    .product-image {
-        width: 80px;
-        height: 80px;
-        margin-right: 90px;
+    .product-image-01{
+        width: 100px;
+        height: 100px;
         border-right: 0;
         border-bottom:1px solid rgb(247,147,30);
     }
@@ -146,4 +145,92 @@
         padding: 8px 16px;
         font-size: 14px;
     }
+}
+.no-order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    padding-top: 10%;
+    color: rgb(247,147,30);
+}
+
+.no-order-text {
+    text-align: center;
+}
+
+.no-order-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.no-order-text p {
+    font-size: 16px;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.no-order-text {
+    animation: fadeInOut 2s ease-in-out infinite;
+    -webkit-animation: fadeInOut 2s ease-in-out infinite;
+    -moz-animation: fadeInOut 2s ease-in-out infinite;
+    -o-animation: fadeInOut 2s ease-in-out infinite;
 }

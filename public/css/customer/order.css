@@ -12,6 +12,7 @@
 .order-box-02{
     width: 50%;
     height: 100%;
+
 }
 .order-box-01 form{
     width: 80%;
@@ -32,7 +33,7 @@
     align-items: center;
 }
 .form-row input{
-    width: 50%;
+    width: 40%;
     height: 50%;
     outline: none;
     border: 1px solid silver;
@@ -114,55 +115,76 @@
 
 @media screen and (max-width: 600px) {
 
-    /* Collapse the order box into a single column */
     .order-box {
         width: 100%;
         height: 100vh;
-       flex-direction: column;
-        /*align-items: center;*/
-        /*justify-content: center;*/
         padding-top: 30vh;
+        align-items: center;
+        flex-direction: column-reverse;
     }
 
-    /* Align the order box form and details side-by-side */
-    .order-box-01,
-    .order-box-details {
-        width: 80%;
-        border: 1px solid red;
+    .order-box-01{
+        width: 95%;
         height: 100%;
         margin-left: 0%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    /* Remove the border between the order box form and details */
     .order-box-01 form,
     .order-box-details {
         border: none;
     }
 
-    /* Collapse the form rows into a single column */
+    .order-box-01 form{
+        width: 90%;
+        height: 80%;
+        margin-left: 0%;
+    }
+
+    .form-row{
+        height: 30%;
+        margin-left: 0%;
+    }
+
     .form-row,
     .form-row-01 {
         width: 100%;
-        height: auto;
+        height: 40%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        align-items: center;
+        margin-left: 0%;
+        padding-left: 0%;
     }
 
-    /* Resize the form inputs and select elements */
     .form-row input,
-    .form-row select {
-        width: 100%;
-        height: 32px;
+    .form-row select, .form-row-01 input {
+        width: 90%;
+        height: 40px;
         padding-left: 8px;
         outline: none;
         border: 1px solid silver;
         border-radius: 4px;
     }
 
-    /* Move the form button to the bottom of the form */
     .order-box-01 form button {
-        margin-top: 0;
+        margin-top: 2px;
+        width: 50%;
+        height: 10%;
+        margin-left: 10px;
     }
 
+    .order-box-02{
+        width: 80%;
+        height: 30%;
+    }
+
+    .order-box-details{
+        width: 100%;
+        height: 100%;
+        margin-top: 0%;
+    }
 }
